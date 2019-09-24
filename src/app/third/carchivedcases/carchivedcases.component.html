@@ -1,0 +1,200 @@
+<div class="container">
+  <section class="content-header">
+    <h1>
+      Archived Cases <small>List</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li class="active"> Archived Cases </li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row" style="margin-bottom:10px;">
+
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <!-- /.box-header -->
+
+          <div class="box-body table-responsive" id="result">
+            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-sm-6">
+
+                  </div>
+                  <div class="col-sm-6">
+                    <div id="example1_filter" class="dataTables_filter">
+                      <label>Search:<input type="search" class="form-control input-sm" placeholder=""
+                          aria-controls="example1" [(ngModel)]="searchText"></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="row">
+                  <table id="example1" class="table table-bordered table-striped table-mailbox dataTable no-footer"
+                    role="grid" aria-describedby="example1_info">
+                    <thead>
+                      <tr role="row">
+                        <th width="5%" class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-sort="ascending" aria-label="Sr No: activate to sort column descending"
+                          style="width: 18px;">Sr No</th>
+                        <th width="8%" class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-label="Star: activate to sort column ascending" style="width: 47px;">Star</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-label="Case Title: activate to sort column ascending" style="width: 80px;">Case Title
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-label="Case No: activate to sort column ascending" style="width: 66px;">Case No</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-label="Client: activate to sort column ascending" style="width: 104px;">Client</th>
+                        <th width="20%" class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-label="Action: activate to sort column ascending" style="width: 536px;">Action</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+
+
+                      <tr class="gc_row odd" role="row"
+                        *ngFor="let i = index;let item of addcases | filter:searchText | paginate: { itemsPerPage: 10, currentPage: p }">
+                        <td class="sorting_1">{{ (p - 1) * 10 + i +1 }}</td>
+                        <td class="small-col">
+
+                          <a (click)="starupdate(item.id)" at="90" class="Privat"><span style="display:none">1</span>
+                            <div *ngIf="item.starred_cases == 0"><i class="fa fa-star-o"></i></div>
+                            <div *ngIf="item.starred_cases == 1"><i class="fa fa-star"></i></div>
+                          </a>
+                        </td>
+                        <td>{{item.case_title}}</td>
+                        <td>{{item.case_no}}</td>
+                        <td>{{item.client_name}}</td>
+
+
+                        <td width="53%">
+
+                          <a class="btn btn-default" style="margin-right: 3px;"
+                            [routerLink]="['/main/cases/viewcase',item.id]"><i class="fa fa-eye"></i> View</a>
+
+                          <a class="btn btn-danger" style="margin-left:20px;"
+                          (click)="restoreacase(item.id)"><i class="fa fa-check"></i> Restore</a>
+                          <a class="btn btn-danger" style="margin-left:20px;"
+                          (click)="deleteacase(item.id)"><i class="fa fa-check"></i> Delete</a>
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-sm-5">
+
+                  </div>
+                  <div class="col-sm-7" style="text-align: right;">
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div><!-- /.box-body -->
+        </div><!-- /.box -->
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="modal fade deleteRequest" tabindex="-1" role="dialog">
+  <div class="modal-dialog  modal-sm" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Delete Request</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <p>
+                  <i class="fa fa-check fa-2"></i>
+                  <span>&nbsp;Are you sure Want to Delete ?</span>
+              </p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-success" (click)=" deletecases()">Yes</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade successmechPopup" tabindex="-1" role="dialog">
+      <div class="modal-dialog  modal-sm" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title" id="myModalLabel">Case Delete</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <p>
+                      <i class="fa fa-check fa-2"></i>&nbsp;
+                      <span>Case Deleted sucessfully</span>
+                  </p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">close</button>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="modal fade restoreRequest" tabindex="-1" role="dialog">
+      <div class="modal-dialog  modal-sm" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title" id="myModalLabel">Case Restore Request</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <p>
+                      <i class="fa fa-check fa-2"></i>
+                      <span>&nbsp;Are you sure Want to Restore the case ?</span>
+                  </p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-success" (click)="restorecases()">Yes</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+              </div>
+          </div>
+      </div>
+    </div>
+    
+    <div class="modal fade successmechPopup1" tabindex="-1" role="dialog">
+          <div class="modal-dialog  modal-sm" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h4 class="modal-title" id="myModalLabel">Case Restore</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                      <p>
+                          <i class="fa fa-check fa-2"></i>&nbsp;
+                          <span>Case has been restored sucessfully</span>
+                      </p>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">close</button>
+                  </div>
+              </div>
+          </div>
+        </div>

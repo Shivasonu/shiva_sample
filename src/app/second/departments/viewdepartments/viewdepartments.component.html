@@ -1,0 +1,61 @@
+<div class="container">
+  <section class="content-header">
+    <h1>
+      Departments <small>View</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a [routerLink]="['/main/dasbhoard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+      <li><a [routerLink]="['/main/hrmange/departments']">Departments </a></li>
+      <li class="active"><b>View</b></li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+          <!-- /.box-header -->
+          <div class="box-body" *ngFor="let item of adddepartments;let i = index;">
+            <div class="box-body">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-2">
+                    <label for="name" style="clear:both;"> Department Name</label>
+                  </div>
+                  <div class="col-md-4">
+                    {{item.dept_name |titlecase}} </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-2">
+                    <label for="name" style="clear:both;">Description</label>
+                  </div>
+                  <div class="col-md-4">
+                    {{item.dept_description |titlecase}} </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-2">
+                    <label for="name" style="clear:both;">Designations</label>
+                  </div>
+                  <div class="col-md-4">
+                    {{item.designation}} </div>
+                </div>
+              </div>
+
+
+
+            </div><!-- /.box-body -->
+
+
+          </div><!-- /.box -->
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

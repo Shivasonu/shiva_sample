@@ -1,0 +1,96 @@
+<div class="container">
+  <section class="content-header">
+    <h1>
+      Documents <small>Edit</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+      <li><a [routerLink]="['/main/cases/documents']">Documents</a></li>
+      <li class="active">Edit</li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">Edit</h3>
+          </div><!-- /.box-header -->
+          <!-- form start -->
+          <h3 style="color:#FF0000"></h3>
+          <form *ngFor="let item of addcases1;let i = index;" >
+            <div class="box-body">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label for="name" style="clear:both;"> Type</label>
+                    <select class="form-control" name="is_case" [(ngModel)]="addcases1[i].type"
+                    class="form-control" #is_case="ngModel"
+                    [ngModelOptions]="{standalone: true}" (change)="changecase(is_case.value)">
+                      <option value="case">Case</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group" >
+                <div class="row">
+                  <div class="col-md-4" [hidden]="newcase !='case'">
+                    <label for="name" style="clear:both;">Case</label>
+                    <select name="case_id" [(ngModel)]="addcases1[i].case_name" class="form-control"
+                    #case_id="ngModel" [ngModelOptions]="{standalone: true}"
+                    class="form-control chzn">
+                      <option *ngFor="let item of adddocument;let i = index;" value={{adddocument[i].id}}>
+                        {{adddocument[i].case_title}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group" id="title">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label for="name" style="clear:both;">Title</label>
+                    <input type="text" name="title" [(ngModel)]="addcases1[i].title"
+                    class="form-control" #title="ngModel"
+                    [ngModelOptions]="{standalone: true}" class="form-control">
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- /.box-body -->
+
+            <div class="box-footer">
+              <button type="submit" (click)="updatecases(title,is_case,case_id,item.id)" class="btn btn-primary">Update</button>
+            </div>
+          </form>
+        </div><!-- /.box -->
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="modal fade successmechPopup" tabindex="-1" role="dialog">
+  <div class="modal-dialog  modal-sm" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Case Document Update</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <p>
+                  <i class="fa fa-check fa-2"></i>&nbsp;
+                  <span>Case Document Updated sucessfully</span>
+              </p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" (click)="redirect()" class="btn btn-danger" data-dismiss="modal">close</button>
+          </div>
+      </div>
+  </div>
+</div>

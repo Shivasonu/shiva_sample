@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Court Category <small>Edit</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+        <li><a [routerLink]="['/main/master/court-category']">Court Category</a></li>
+        <li class="active"><b>Edit</b></li>
+      </ol>
+    </section>
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form *ngFor="let item of addcourtcategorys;let i = index;">
+              <div class="box-body">
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <label for="name" style="clear:both;">Name</label>
+                      <input type="text" name="name" [(ngModel)]="addcourtcategorys[i].name" class="form-control"
+                        #name="ngModel" [ngModelOptions]="{standalone: true}">
+                    </div>
+                  </div>
+                </div>
+              </div><!-- /.box-body -->
+              <div class="box-footer">
+                <button type="submit" (click)="updatecourtcategory(name,item.id)"
+                  class="btn btn-primary">Update</button>
+              </div>
+            </form>
+          </div><!-- /.box -->
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+<div class="modal fade successmechPopup" tabindex="-1" role="dialog">
+  <div class="modal-dialog  modal-sm" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Court Category Update</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <p>
+                  <i class="fa fa-check fa-2"></i>&nbsp;
+                  <span>Court Category Updated sucessfully</span>
+              </p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" (click)="redirect()" class="btn btn-danger" data-dismiss="modal">close</button>
+          </div>
+      </div>
+  </div>
+</div>

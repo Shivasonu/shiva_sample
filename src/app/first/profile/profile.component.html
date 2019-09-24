@@ -1,0 +1,94 @@
+<section class="content-header">
+  <h1>
+    User Form <small>Add/Update</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+
+    <li class="active">Form</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Account </h3>
+        </div><!-- /.box-header -->
+        <!-- form start -->
+        <form method="post" enctype="multipart/form-data"  >
+          <div class="box-body" *ngFor="let item of editprofiles;let i = index;">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-3">
+                  <label>Name</label>
+                  <input type="text" name="name" value="" [(ngModel)]="editprofiles[i].name"
+                  class="form-control" #name="ngModel" [ngModelOptions]="{standalone: true}"> </div>
+                  <div class="col-md-3">
+                      <label>Profile Picture</label>
+                      <input type="file" id="file" multiple (change)="getFileDetails($event)"
+                                                class="form-control">
+                    </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-3">
+                  <label>Username</label>
+                  <input type="text" name="username" value="" [(ngModel)]="editprofiles[i].username"
+                  class="form-control" #username="ngModel" [ngModelOptions]="{standalone: true}" disabled="disabled"> 
+                  </div>
+                <div class="col-md-3">
+                  <label>Email</label>
+                  <input type="text" name="email" value="" class="form-control" [(ngModel)]="editprofiles[i].email"
+                  class="form-control" #email="ngModel" [ngModelOptions]="{standalone: true}" > </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-3">
+                <label>Password</label>
+                <input type="password" name="password" value="" [(ngModel)]="editprofiles[i].password" class="form-control" #password="ngModel"
+                [ngModelOptions]="{standalone: true}"> </div>
+              <div class="col-md-3">
+                <label>Confirm Password</label>
+                <input type="password" name="confirm" value="" [(ngModel)]="editprofiles[i].confirm" class="form-control" #confirm="ngModel"
+                [ngModelOptions]="{standalone: true}"> </div>
+            </div>
+<div class="row">
+  <div class="col-md-3"><label></label>
+    <button type="submit" (click)="editprofile(editprofiles)" class="btn btn-primary">Save</button>
+  </div>
+</div>
+        
+            
+          </div>
+        </form>
+      </div><!-- /.box -->
+    </div>
+  </div>
+</section>
+<div class="modal fade successmechPopup" tabindex="-1" role="dialog">
+  <div class="modal-dialog  modal-sm" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Profile Updated</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <p>
+                  <i class="fa fa-check fa-2"></i>&nbsp;
+                  <span>updated sucessfully</span>
+              </p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" (click)="redirect()" class="btn btn-danger" data-dismiss="modal">close</button>
+          </div>
+      </div>
+  </div>
+</div>

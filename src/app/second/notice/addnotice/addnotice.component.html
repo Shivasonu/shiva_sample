@@ -1,0 +1,102 @@
+<div class="container">
+    <section class="content-header">
+        <h1>
+            Notice Board <small>Add</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+            <li><a [routerLink]="['/main/hrmange/notice']">Notice</a></li>
+            <li class="active"><b>Add</b></li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form  #f="ngForm">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="name" style="clear:both;"> Title <span>*</span></label>
+                                        <input type="text" name="title" value="" [(ngModel)]="user.title"
+                                            #title="ngModel" class="form-control"
+                                            onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode > 31 && event.charCode < 33) || (event.charCode > 47 && event.charCode < 58)"
+                                            required pattern="[a-zA-Z ]*">
+                                        <span class="err-msg">
+                                            <div *ngIf="title.touched">
+                                                <div *ngIf="title.errors && title.errors.required">
+                                                    Title is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                        <span class="err-msg">
+                                            <div *ngIf="title.touched">
+                                                <div *ngIf="title.errors && title.errors.pattern">
+                                                    Please enter olny Alphabits
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="name" style="clear:both;">Description <span>*</span></label>
+                                        <textarea name="description" class="form-control" [(ngModel)]="user.description"
+                                            #description="ngModel" rows="1" required></textarea>
+                                        <span class="err-msg">
+                                            <div *ngIf="description.touched">
+                                                <div *ngIf="description.errors && description.errors.required">
+                                                    Description is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="name" style="clear:both;">Date <span>*</span></label>
+                                        <input type="date" name="date_time" class="form-control datetimepicker"
+                                            [(ngModel)]="user.date_time" #date_time="ngModel" required>
+                                        <span class="err-msg">
+                                            <div *ngIf="date_time.touched">
+                                                <div *ngIf="date_time.errors && date_time.errors.required">
+                                                    Date is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                        <div class="col-md-4 col-md-offset-4">
+                            <button type="submit" (click)="addnotice(user)" class="btn btn-primary" [disabled]="!f.valid">Save</button>
+                        </div>
+                    </form>
+                </div><!-- /.box -->
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="modal fade successmechPopup" tabindex="-1" role="dialog">
+    <div class="modal-dialog  modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Applicant Add</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <i class="fa fa-check fa-2"></i>&nbsp;
+                    <span>Applicant added sucessfully</span>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" (click)="redirect()" class="btn btn-danger" data-dismiss="modal">close</button>
+            </div>
+        </div>
+    </div>
+  </div>

@@ -1,0 +1,208 @@
+<section class="content-header">
+  <h1>
+    case study <small>Attachments</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+    <li><a [routerLink]="['/main/casestudy']">Case Study</a></li>
+    <li class="active">Attachments</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box">
+      <br><!-- /.box-header -->
+        <div class="box-body">
+
+
+
+          <div class="col-xs-12">
+            <form method="post" enctype="multipart/form-data" #f="ngForm">
+              <div class="form-group input_fields_wrap">
+                <div class="row  ">
+                  <div class="col-md-2">
+                    <label for="name" style="clear:both;"> Attachment</label>
+
+                  </div>
+                  <div class="col-md-4">
+                    <div>
+                      <input type="text" name="title" [(ngModel)]="user.title" #title="ngModel" class="form-control"
+                        placeholder="Title" required pattern="[a-zA-Z ]*">
+                      <span class="err-msg">
+                        <div *ngIf="title.touched">
+                          <div *ngIf="title.errors && title.errors.required">
+                            Title is required
+                          </div>
+                        </div>
+                      </span>
+                      <span class="err-msg">
+                        <div *ngIf="title.touched">
+                          <div *ngIf="title.errors && title.errors.pattern">
+                            Please enter olny Alphabits
+                          </div>
+                        </div>
+                      </span>
+                    </div>
+
+                  </div>
+                  <div class="col-md-4">
+                    <input type="file" name="file" id="file" multiple (change)="getFileDetails($event)"
+                      class="form-control" required>
+
+                  </div>
+
+                </div>
+              </div>
+
+
+              <div class="row ">
+                <div class="col-xs-12" style="padding:20px;">
+                  <input type="submit" (click)="addattachment(user)" [disabled]="!f.valid"  value="Save" class="btn btn-primary">
+                </div>
+              </div>
+
+
+            </form>
+          </div>
+
+
+          <div class="box-body table-responsive">
+            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-sm-6">
+
+                  </div>
+                  <div class="col-sm-6">
+                    <div id="example1_filter" class="dataTables_filter">
+                      <label>Search:<input type="search" class="form-control input-sm" placeholder=""
+                          aria-controls="example1" [(ngModel)]="searchText"></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div >
+                <div class="col-sm-12">
+                  <table id="example1" class="table table-bordered table-striped dataTable no-footer" role="grid"
+                    aria-describedby="example1_info">
+                    <thead>
+                      <tr role="row" width="auto">
+                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-sort="ascending" aria-label="Sr No: activate to sort column descending"
+                          style="width: 381px;">Sr No</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-label="Name: activate to sort column ascending" style="width: 393px;">Name</th>
+                        <th width="20%" class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-label="Action: activate to sort column ascending" style="width: 174px;">Action</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+
+                      <tr class="gc_row odd" role="row"
+                        *ngFor="let i = index;let item of addcasess | filter:searchText | paginate: { itemsPerPage: 10, currentPage: p }">
+                        <td class="sorting_1">{{ (p - 1) * 10 + i +1 }}</td>
+                        <td>{{item.title}}</td>
+                        <td class="col-md-3">
+                          <div class="btn-group">
+                            <a download href="C:/xampp/htdocs/advocate_api/casestudy/{{item.attachment}}"
+                              target="_blank" class="btn btn-default" style="margin-left:2px;"><i
+                                class="fa fa-download"></i> Download</a>
+
+
+                            <a (click)="deleteattach(item.id)" class="btn btn-danger" style="margin-left:2px;"><i
+                                class="fa fa-trash"></i> Delete</a>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-sm-5">
+
+                  </div>
+                  <div class="col-sm-7" style="text-align: right;">
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /.box-body -->
+        </div><!-- /.box -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal fade successmechPopup" tabindex="-1" role="dialog">
+  <div class="modal-dialog  modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Casestudy Attachment Add</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          <i class="fa fa-check fa-2"></i>&nbsp;
+          <span>Attachment added sucessfully</span>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="redirect()" class="btn btn-danger" data-dismiss="modal">close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade deleteRequest" tabindex="-1" role="dialog">
+  <div class="modal-dialog  modal-sm" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Delete Request</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <p>
+                  <i class="fa fa-check fa-2"></i>
+                  <span>&nbsp;Are you sure Want to Delete ?</span>
+              </p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-success" (click)=" deleteattachment()">Yes</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade successmechPopup1" tabindex="-1" role="dialog">
+      <div class="modal-dialog  modal-sm" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title" id="myModalLabel">Casestudy Attachment Delete</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <p>
+                      <i class="fa fa-check fa-2"></i>&nbsp;
+                      <span>Attachment Deleted sucessfully</span>
+                  </p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">close</button>
+              </div>
+          </div>
+      </div>
+    </div>

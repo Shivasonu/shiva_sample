@@ -1,0 +1,134 @@
+<div class="container">
+  <div class="content-wrapper">
+    <script type="text/javascript">
+      function areyousure() {
+        return confirm('Are You Sure? Do you want to delete.');
+      }
+    </script>
+    <section class="content-header">
+      <h1>
+        Tax <small>List</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+        <li class="active">Tax</li>
+      </ol>
+    </section>
+
+    <section class="content">
+      <div class="row" style="margin-bottom:10px;">
+        <div class="col-xs-12">
+          <div class="btn-group pull-right">
+            <a class="btn btn-default" [routerLink]="['/main/master/tax/addtax']"><i class="fa fa-plus"></i> Add New</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <!-- /.box-header -->
+            <div class="box-body table-responsive">
+              <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                <div class="col-sm-12">
+                  <div class="row">
+                    <div class="col-sm-6">
+                    </div>
+                    <div class="col-sm-6 ">
+                      <div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search"
+                            class="form-control input-sm" placeholder="" aria-controls="example1" [(ngModel)]="searchText"></label></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="row">
+                    <table id="example1" class="table table-bordered table-striped dataTable no-footer" role="grid"
+                      aria-describedby="example1_info">
+                      <thead>
+                        <tr role="row">
+                          <th style="width: 211px;">Sr No</th>
+                          <th style="width: 219px;">Name</th>
+                          <th style="width: 254px;">Tax (%)</th>
+                          <th style="width: 228px;">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="gc_row odd" role="row" *ngFor="let i = index;let item of addtaxs | filter:searchText | paginate: { itemsPerPage: 10, currentPage: p }">
+                            <td class="sorting_1">{{ (p - 1) * 10 + i +1 }}</td>
+                          <td>{{item.name}}</td>
+                          <td>{{item.tax_percent}}</td>
+                          <td width="27%">
+                            <div class="btn-group">
+                              <a class="btn btn-primary" [routerLink]="['/main/master/tax/edittax/',item.id]"
+                                style="margin-left:12px;"><i class="fa fa-edit"></i> Edit</a>
+                              <a class="btn btn-danger" (click)="deletetax(item.id)" style="margin-left:20px;"><i
+                                  class="fa fa-trash"></i> Delete</a>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-5">
+
+                        </div>
+                        <div class="col-sm-7" style="text-align: right;">
+                            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div><!-- /.box-body -->
+          </div><!-- /.box -->
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="modal fade deleteRequest" tabindex="-1" role="dialog">
+  <div class="modal-dialog  modal-sm" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Delete Request</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <p>
+                  <i class="fa fa-check fa-2"></i>
+                  <span>&nbsp;Are you sure Want to Delete ?</span>
+              </p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-success" (click)=" deletetaxdata()">Yes</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade successmechPopup" tabindex="-1" role="dialog">
+      <div class="modal-dialog  modal-sm" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title" id="myModalLabel">Tax Delete</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <p>
+                      <i class="fa fa-check fa-2"></i>&nbsp;
+                      <span>Tax Deleted sucessfully</span>
+                  </p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">close</button>
+              </div>
+          </div>
+      </div>
+    </div>

@@ -1,0 +1,177 @@
+<div class="container">
+  <section class="content-header">
+    <h1>
+      Tasks <small>Add</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+      <li><a [routerLink]="['/main/tasks/alltasks']">All Tasks</a></li>
+      <li class="active"><b>Add</b></li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+          <!-- /.box-header -->
+          <!-- form start -->
+          <form #f="ngForm" name="myForm">
+            <div class="box-body">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label for="name" style="clear:both;">Name <span>*</span></label>
+                    <input type="text" name="name" [(ngModel)]="tasks.name"
+                    #name="ngModel" class="form-control" required pattern="[a-zA-Z ]*">
+                    <span class="err-msg">
+                      <div *ngIf="name.touched">
+                          <div *ngIf="name.errors && name.errors.required">
+                            Task Name is required
+                          </div>
+                      </div>
+                  </span>
+                  <span class="err-msg">
+                      <div *ngIf="name.touched">
+                          <div *ngIf="name.errors && name.errors.pattern">
+                              Please enter olny Alphabits
+                          </div>
+                      </div>
+                  </span>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="email" style="clear:both;">Priority <span>*</span></label>
+                    <select name="priority" [(ngModel)]="tasks.priority"
+                    #priority="ngModel" class="form-control chzn" required>
+                      <option value="">--Select Priority---</option>
+                      <option value="1">Low</option>
+                      <option value="2">Medium</option>
+                      <option value="3">High</option>
+                    </select>
+                    <span class="err-msg">
+                      <div *ngIf="priority.touched">
+                          <div *ngIf="priority.errors && priority.errors.required">
+                            Task Priority is required
+                          </div>
+                      </div>
+                  </span>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="dob" style="clear:both;">Due Date <span>*</span></label>
+                    <input type="date" name="due_date" [(ngModel)]="tasks.due_date"
+                    #due_date="ngModel" value="" class="form-control datepicker" required>
+                    <span class="err-msg">
+                      <div *ngIf="due_date.touched">
+                          <div *ngIf="due_date.errors && due_date.errors.required">
+                            Task Due Date is required
+                          </div>
+                      </div>
+                  </span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label for="case_id" style="clear:both;">Case <span>*</span></label>
+                    <select name="case_id" [(ngModel)]="tasks.case_id"
+                    #case_id="ngModel" class="form-control chzn" required>
+                    <option value="">--Select Case---</option>
+                    <option *ngFor="let item of addcases;let i = index;" value={{addcases[i].case_no}}>{{addcases[i].case_no}}</option>
+                    </select>
+                    <span class="err-msg">
+                      <div *ngIf="case_id.touched">
+                          <div *ngIf="case_id.errors && case_id.errors.required">
+                            Task Case Id is required
+                          </div>
+                      </div>
+                  </span>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="employee_id" style="clear:both;">Assigned_to <span>*</span></label>
+                    <select name="employee_id[]" [(ngModel)]="tasks.employee_id"
+                    #employee_id="ngModel" class="form-control chzn" multiple="multiple"
+                      data-placeholder="Select Employees" required>
+                      <option *ngFor="let item of addemployee;let i = index;" value={{addemployee[i].id}}>{{addemployee[i].name}}</option>
+                      <!-- <option value="1">Vipin Kadian</option>
+                      <option value="4">Juliet Kamau</option>
+                      <option value="5">Tornado</option>
+                      <option value="6">kali</option> -->
+                    </select>
+                    <span class="err-msg">
+                      <div *ngIf="employee_id.touched">
+                          <div *ngIf="employee_id.errors && employee_id.errors.required">
+                            Assign Employee is required
+                          </div>
+                      </div>
+                  </span>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="progress" style="clear:both;">Progress <span>*</span></label>
+                    <input type="number" value="" name="progress" min="1" max="100" [(ngModel)]="tasks.progress"
+                    #progress="ngModel" class="form-control" pattern="[0-9]{1,3}" required>
+                    <span class="err-msg">
+                        <div *ngIf="progress.touched">
+                            <div *ngIf="progress.errors && progress.errors.required">
+                              Progress is required
+                            </div>
+                        </div>
+                    </span>
+                    <span class="err-msg">
+                        <div *ngIf="progress.touched">
+                            <div *ngIf="progress.errors && progress.errors.pattern">
+                                Please enter only numbers
+                            </div>
+                        </div>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label for="email" style="clear:both;">Description <span>*</span></label>
+                    <textarea name="description" [(ngModel)]="tasks.description"
+                    #description="ngModel" class="form-control redactor" dir="ltr" required></textarea>
+                    <span class="err-msg">
+                      <div *ngIf="description.touched">
+                          <div *ngIf="description.errors && description.errors.required">
+                            Description is required
+                          </div>
+                      </div>
+                  </span>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /.box-body -->
+            <div class="col-md-4 col-md-offset-4 box-footer ">
+              <button type="submit" (click)="addtasks(tasks)" [disabled]="!f.valid" class="btn btn-primary">Save</button>
+            </div>
+          </form>
+        </div><!-- /.box -->
+      </div>
+    </div>
+  </section>
+</div>
+<div class="modal fade successmechPopup" tabindex="-1" role="dialog">
+  <div class="modal-dialog  modal-sm" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Task Add</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <p>
+                  <i class="fa fa-check fa-2"></i>&nbsp;
+                  <span>Task added sucessfully</span>
+              </p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" (click)="redirect()" class="btn btn-danger" data-dismiss="modal">close</button>
+          </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="contaniner">
+  <section class="content-header">
+      <h1>
+          User Roles        <small>Edit</small>
+      </h1>
+      <ol class="breadcrumb">
+          <li><a [routerLink]="['/main/dashboard']" ><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+          <li><a [routerLink]="['/main/hrmange/user-role']">User Roles</a></li>
+          <li class="active">Edit</li>
+      </ol>
+  </section>
+  <section class="content">
+      <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+              <!-- general form elements -->
+              <div class="box box-primary">
+                  <div class="box-header with-border">
+                      <h3 class="box-title">Edit</h3>
+                  </div><!-- /.box-header -->
+                  <!-- form start -->
+                  <form *ngFor="let item of adduserroles;let i = index;">
+                                        <div class="box-body">
+                          <div class="form-group">
+                            <div class="row">
+                                  <div class="col-md-4">
+                                      <label for="name" style="clear:both;"> Name</label>
+                    <input type="text" name="name"  [(ngModel)]="adduserroles[i].user_type" #name="ngModel" [ngModelOptions]="{standalone: true}" class="form-control">
+                                  </div>
+                              </div>
+                          </div>
+              
+               <div class="form-group">
+                            <div class="row">
+                                  <div class="col-md-4">
+                                      <label for="name" style="clear:both;">Description</label>
+                    <textarea name="description" [(ngModel)]="adduserroles[i].description" #description="ngModel" [ngModelOptions]="{standalone: true}" class="form-control"></textarea>
+                                  </div>
+                              </div>
+                          </div>
+              
+                      </div><!-- /.box-body -->
+      
+                      <div class="box-footer">
+                          <button type="submit" class="btn btn-primary" (click)="updateuserrole(name,description, item.id)">Save</button>
+                      </div>
+                           </form></div><!-- /.box -->
+          </div>
+       </div>
+  </section>
+</div>

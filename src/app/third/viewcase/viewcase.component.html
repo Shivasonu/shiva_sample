@@ -1,0 +1,361 @@
+<div class="container">
+  <section class="content-header">
+    <h1>
+      Case <small>View</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li><a [routerLink]="['/main/cases/allcases']">Cases</a></li>
+      <li class="active">View</li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+
+          <div class="box-body">
+            <div class="box-body" *ngFor="let item of addcases;let i = index;">
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-3">
+                    <b>Case Title</b>
+                  </div>
+                  <div class="col-md-4">
+
+                    {{item.case_title}} </div>
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-3">
+                    <b>Case No</b>
+                  </div>
+                  <div class="col-md-4">
+                    {{item.case_no}} </div>
+                </div>
+              </div>
+
+
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-3">
+                    <b>Client Name</b>
+
+                  </div>
+                  <div class="col-md-4">
+                    {{item.client_name}} </div>
+
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-3">
+                    <b>Location</b>
+                  </div>
+                  <div class="col-md-4">
+                    {{item.location}}
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-3">
+                    <b>Court</b>
+                  </div>
+                  <div class="col-md-4">
+                    {{item.court}} </div>
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-3">
+                    <b>Court Category</b>
+                  </div>
+                  <div class="col-md-4">
+                    {{item.court_category}}
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-3">
+                    <b>Case Category</b>
+                  </div>
+                  <div class="col-md-4">
+                    {{item.case_cate}} </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-3">
+                    <b>Stages Stages</b>
+                  </div>
+                  <div class="col-md-4">
+                    {{item.case_stage}} </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-3">
+                    <b>Act</b>
+                  </div>
+                  <div class="col-md-4">
+                    {{item.act}} </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-3">
+                    <b>Description</b>
+                  </div>
+                  <div class="col-md-4">
+                    {{item.description}} </div>
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-3">
+                    <b>Filling Date</b>
+                  </div>
+                  <div class="col-md-4">
+                    {{item.filling_date}} </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-3">
+                    <b>Hearing Date</b>
+                  </div>
+                  <div class="col-md-4">
+                    {{item.hearing_date}} </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-3">
+                    <b>Apposite Lawyer</b>
+                  </div>
+                  <div class="col-md-4">
+                    {{item.apposite_lawyer}} </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-3">
+                    <b>Total Fees</b>
+                  </div>
+                  <div class="col-md-4">
+                    {{item.total_fees}} </div>
+                </div>
+              </div>
+
+            </div>
+            <div>
+
+
+
+
+              <h2>Payment History</h2>
+              <div class="box-body table-responsive">
+                <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                  <div class="col-sm-12">
+                    <div class="row">
+                      <div class="col-sm-6">
+
+                      </div>
+                      <div class="col-sm-6">
+                        <div id="example1_filter" class="dataTables_filter">
+                          <label>Search:<input type="search" class="form-control input-sm" placeholder=""
+                              aria-controls="example1" [(ngModel)]="searchText"></label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="row">
+                      <table id="example1" class="table table-bordered table-striped table-mailbox dataTable no-footer"
+                        role="grid" aria-describedby="example1_info">
+                        <thead>
+                          <tr role="row">
+                            <th width="5%" class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                              colspan="1" aria-sort="ascending" aria-label="Sr No: activate to sort column descending"
+                              style="width: 33px;">Sr No</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                              aria-label="Date: activate to sort column ascending" style="width: 186px;">Date</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                              aria-label="Amount: activate to sort column ascending" style="width: 180px;">Amount</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                              aria-label="Payment Mode: activate to sort column ascending" style="width: 305px;">Payment
+                              Mode</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                              aria-label=": activate to sort column ascending" style="width: 234px;"></th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+
+
+                          <tr class="gc_row odd" role="row">
+                            <td class="sorting_1">1</td>
+                            <td>01/07/18</td>
+                            <td>5000.00</td>
+                            <td>Cash</td>
+                            <td><a class="btn btn-default">Invoice</a></td>
+
+
+                          </tr>
+                          <tr class="gc_row even" role="row">
+                            <td class="sorting_1">2</td>
+                            <td>26/12/18</td>
+                            <td>1000.00</td>
+                            <td>Cash</td>
+                            <td><a class="btn btn-default">Invoice</a></td>
+
+
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="row">
+                      <div class="col-sm-5">
+
+                      </div>
+                      <div class="col-sm-7" style="text-align: right;">
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+                <h2>Case History</h2>
+
+                <div class="box-body table-responsive">
+                  <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                    <div class="col-sm-12">
+                      <div class="row">
+                        <div class="col-sm-6">
+
+                        </div>
+                        <div class="col-sm-6">
+                          <div id="example1_filter" class="dataTables_filter">
+                            <label>Search:<input type="search" class="form-control input-sm" placeholder=""
+                                aria-controls="example1" [(ngModel)]="searchText"></label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="row">
+                        <table id="example2"
+                          class="table table-bordered table-striped table-mailbox dataTable no-footer" role="grid"
+                          aria-describedby="example2_info">
+                          <thead>
+                            <tr role="row">
+                              <th width="5%" class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
+                                colspan="1" aria-sort="ascending" aria-label="Sr No: activate to sort column descending"
+                                style="width: 32px;">Sr No</th>
+                              <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="Next Date: activate to sort column ascending" style="width: 226px;">Next
+                                Date</th>
+                              <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="Last Date: activate to sort column ascending" style="width: 220px;">Last
+                                Date</th>
+                              <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="Notes: activate to sort column ascending" style="width: 150px;">Notes</th>
+                              <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="Attachement: activate to sort column ascending" style="width: 290px;">
+                                Attachement</th>
+                            </tr>
+                          </thead>
+
+                          <tbody>
+                            <tr class="odd">
+                              <td valign="top" colspan="5" class="dataTables_empty">No data available in table</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="row">
+                        <div class="col-sm-5">
+
+                        </div>
+                        <div class="col-sm-7" style="text-align: right;">
+                          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div><!-- /.box-body -->
+
+
+
+                <h2>Documents</h2>
+
+                <div class="box-body table-responsive">
+                  <table id="example2" class="table table-bordered table-striped table-mailbox">
+                    <thead>
+                      <tr>
+                        <th style="width:10%">Sr No</th>
+                        <th style="width:10%">Name</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr class="gc_row">
+                        <td>1</td>
+                        <td>fsdf</td>
+                        <td class="col-md-3">
+                          <div class="btn-group">
+                            <a class="btn btn-default" download="" style="margin-left:2px;"><i
+                                class="fa fa-download"></i> Download</a>
+
+
+                            <a class="btn btn-danger" style="margin-left:2px;" onclick="return areyousure()"><i
+                                class="fa fa-trash"></i> Delete</a>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+
+                </div><!-- /.box-body -->
+
+              </div><!-- /.box -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

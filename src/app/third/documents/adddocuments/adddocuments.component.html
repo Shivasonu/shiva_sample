@@ -1,0 +1,109 @@
+<div class="container">
+  <section class="content-header">
+    <h1>
+      Documents <small>Add</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+      <li><a [routerLink]="['/main/cases/documents']">Documents</a></li>
+      <li class="active">Add</li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+          <!-- /.box-header -->
+          <!-- form start -->
+          <h3 style="color:#FF0000"></h3>
+          <form #f="ngForm" name="myForm">
+            <div class="box-body">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label for="name" style="clear:both;"> Type</label>
+                    <select [(ngModel)]="user.is_case" #is_case="ngModel" name="is_case"
+                    (change)="changecase(is_case.value)" data-live-search="true" required class="form-control">
+                    <option value="" [selected]=true>Please select</option>
+                      <option value="case">Case</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group" id="case">
+                <div class="row">
+                  <div class="col-md-4" [hidden]="newcase !='case'">
+                    <label for="name" style="clear:both;">Case</label>
+                    <select [(ngModel)]="user.case_id" #case_id="ngModel" name="case_id"
+                     data-live-search="true" required class="form-control">
+                      <option value="">Select Case</option>
+                      <option *ngFor="let item of adddocument;let i = index;" value={{adddocument[i].id}}>
+                        {{adddocument[i].case_title}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="form-group" id="title">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label for="name" style="clear:both;">Title</label>
+                    <input type="text"name="name" [(ngModel)]="user.name" #name="ngModel" class="form-control"
+                    onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode > 31 && event.charCode < 33) || (event.charCode > 47 && event.charCode < 58)"
+                    required pattern="[a-zA-Z ]*">
+                  <span class="err-msg">
+                    <div *ngIf="name.touched">
+                      <div *ngIf="name.errors && name.errors.required">
+                        Name is required
+                      </div>
+                    </div>
+                  </span>
+                  <span class="err-msg">
+                    <div *ngIf="name.touched">
+                      <div *ngIf="name.errors && name.errors.pattern">
+                        please enter olny Alphabits
+                      </div>
+                    </div>
+                  </span>
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- /.box-body -->
+
+            <div class="box-footer">
+              <button type="submit"  (click)="adddocuments(user)" class="btn btn-primary">Save</button>
+            </div>
+          </form>
+        </div><!-- /.box -->
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="modal fade successmechPopup" tabindex="-1" role="dialog">
+  <div class="modal-dialog  modal-sm" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Docuemnt Add</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <p>
+                  <i class="fa fa-check fa-2"></i>&nbsp;
+                  <span>Docuemnt added sucessfully</span>
+              </p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" (click)="redirect()" class="btn btn-danger" data-dismiss="modal">close</button>
+          </div>
+      </div>
+  </div>
+</div>

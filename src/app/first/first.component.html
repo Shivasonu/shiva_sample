@@ -1,0 +1,350 @@
+<div class="container">
+	<div class="box-body" *ngFor="let i = index;let item of dashboards">
+		<div class="row">
+			<div class="col-lg-3 col-sm-6 col-xs-12">
+				<div class="small-box bg-aqua">
+					<div class="inner">
+						<h3>{{item.no_clients}}</h3>
+						<p>Applicant</p>
+					</div>
+					<div class="icon"><i class="fa fa-user"></i></div>
+					<a routerLink='/main/hrmange/clients' class="small-box-footer">
+						More Info <i class="fa fa-arrow-circle-right"></i>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6 col-xs-12">
+				<div class="small-box bg-green">
+					<div class="inner">
+						<h3>{{item.no_cases}}</h3>
+						<p>Cases</p>
+					</div>
+					<div class="icon"><i class="fa fa-list-ul"></i></div>
+					<a routerLink="/main/cases/allcases" class="small-box-footer">
+						More Info <i class="fa fa-arrow-circle-right"></i>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6 col-xs-12">
+				<div class="small-box bg-yellow">
+					<div class="inner">
+						<h3>{{item.no_starred_cases}}</h3>
+						<p>Starred Cases</p>
+					</div>
+					<div class="icon"><i class="fa fa-star-o"></i></div>
+					<a routerLink='/main/cases/starredcases' class="small-box-footer">
+						More Info <i class="fa fa-arrow-circle-right"></i>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6 col-xs-12">
+				<div class="small-box bg-red">
+					<div class="inner">
+						<h3>{{item.no_archived_cases}}</h3>
+						<p>Archived Cases</p>
+					</div>
+					<div class="icon"><i class="fa fa-archive"></i></div>
+					<a routerLink='/main/cases/carchivedcases' class="small-box-footer">
+						More Info <i class="fa fa-arrow-circle-right"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="margin-top: 10px">
+			<div class="col-lg-3 col-sm-6 col-xs-12">
+				<div class="small-box bg-blue">
+					<div class="inner">
+						<h3>{{item.no_employees}}</h3>
+						<p>Staff</p>
+					</div>
+					<div class="icon"><i class="fa fa-user"></i></div>
+					<a routerLink='/main/hrmange/employees' class="small-box-footer">
+						More Info <i class="fa fa-arrow-circle-right"></i>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6 col-xs-12">
+				<div class="small-box bg-red">
+					<div class="inner">
+						<h3>{{item.no_tasks}}</h3>
+						<p>Tasks</p>
+					</div>
+					<div class="icon"><i class="fa fa-tasks"></i></div>
+					<a routerLink="/main/tasks/alltasks" class="small-box-footer">
+						More Info <i class="fa fa-arrow-circle-right"></i>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6 col-xs-12">
+				<div class="small-box bg-light-blue-gradient">
+					<div class="inner">
+						<h3>{{item.no_casestudy}}</h3>
+						<p>Case Study</p>
+					</div>
+					<div class="icon"><i class="fa fa-book"></i></div>
+					<a [routerLink]="['/main/casestudy']" class="small-box-footer">
+						More Info <i class="fa fa-arrow-circle-right"></i>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6 col-xs-12">
+				<div class="small-box bg-aqua">
+					<div class="inner">
+						<h3>{{item.no_mytasks}}</h3>
+						<p>Assigned Tasks</p>
+					</div>
+					<div class="icon"><i class="fa fa-inbox"></i></div>
+					<a [routerLink]="['/main/tasks/mytasks']" class="small-box-footer">
+						More Info <i class="fa fa-arrow-circle-right"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div>
+		<div class="col-sm-12">
+			<div class="row">
+				<div class="col-sm-3" style="background-color: white">
+					<div class="box box-solid">
+						<div class="box-header with-border">
+							<h4 class="box-title">Calendar Events</h4>
+						</div>
+						<div class="box-body">
+							<!-- the events -->
+							<div id="external-events">
+
+								<div class="external-event bg-light-blue">Appointments</div>
+								<div class="external-event bg-red">Cases</div>
+							</div>
+						</div>
+						<!-- /.box-body -->
+					</div>
+				</div>
+				<div class="col-sm-9" style="background-color: white">
+					<div id="calendar"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<div class="row" style="margin-top:10px">
+			<section class="col-lg-6 col-sm-12 col-xs-12">
+				<div class="box box-solid">
+					<div class="box-header with-border">
+						<i class="fa fa-clipboard"></i>
+						&nbsp;<h3 class="box-title">Today Registered Cases</h3>
+					</div>
+
+					<div class="box-body" *ngFor="let i = index;let item of casesall">
+						<ul class="todo-list">
+
+							<li>
+								<span>{{item.today_date}}</span>
+								<span class="text">{{item.case_title}}</span>
+								<div class="tools">
+									<a [routerLink]="['/main/cases/viewcase',item.id]"> <i class="fa fa-eye"></i></a>
+								</div>
+							</li>
+
+						</ul>
+					</div>
+
+					<div class="box-footer clearfix no-border">
+						<button class="btn btn-default pull-right">
+							<a routerLink="/main/cases/allcases"><i class="fa fa-plus"></i> View All</a>
+						</button>
+					</div>
+				</div>
+			</section>
+			<section class="col-lg-6 col-sm-12 col-xs-12">
+				<div class="box box-solid">
+					<div class="box-header with-border">
+						<i class="fa fa-tasks"></i>
+						&nbsp;<h3 class="box-title">Today To Do List</h3>
+					</div>
+					<div class="box-body" *ngFor="let i = index;let item of list">
+						<ul class="todo-list">
+
+							<li>
+								<span>{{item.today_date}}</span>
+								<span class="text">{{item.name}}</span>
+								<div class="tools">
+									<a [routerLink]="['/main/todolist/view',item.id]"> <i class="fa fa-eye"></i></a>
+								</div>
+							</li>
+
+						</ul>
+					</div>
+					<div class="box-footer clearfix no-border">
+						<button class="btn btn-default pull-right">
+							<a routerLink='/main/todolist'><i class="fa fa-plus"></i> View All</a>
+						</button>
+					</div>
+				</div>
+			</section>
+			<section class="col-lg-6 col-sm-12 col-xs-12">
+				<div class="box box-solid">
+					<div class="box-header with-border">
+						<i class="ion ion-clipboard"></i>
+						<h3 class="box-title">Notice Board</h3>
+					</div>
+					<div class="box-body" *ngFor="let i = index;let item of noticelist">
+						<ul class="todo-list">
+
+							<li>
+								<span class="label label-info"><i class="fa fa-clock-o"></i>{{item.date_time}}</span>
+								<span class="text">{{item.title}}</span>
+								<div class="tools">
+									<a [routerLink]="['/main/hrmange/notice/viewnotice',item.id]"> <i
+											class="fa fa-eye"></i></a>
+								</div>
+							</li>
+
+						</ul>
+					</div>
+					<div class="box-footer clearfix no-border">
+
+						<button class="btn btn-default pull-right">
+							<a routerLink='/main/hrmange/notice'><i class="fa fa-plus"></i> View All</a>
+						</button>
+					</div>
+				</div>
+			</section>
+			<section class="col-lg-6 col-sm-12 col-xs-12">
+				<div class="box box-solid">
+					<div class="box-header with-border">
+						<i class="fa fa-user"></i>
+						<h3 class="box-title">Attendance</h3>
+					</div>
+					<div class="box-body">
+						<a href="#mark_in" *ngIf="edited" class="btn bg-olive btn-flat margin markin"
+							data-toggle="modal"> <i class="fa fa-sign-in"></i> Mark In</a>
+
+						<a href="#mark_out" *ngIf="edited1" class="btn bg-orange btn-flat margin markout"
+							data-toggle="modal"> <i class="fa fa-sign-out"></i> Mark Out</a>
+
+						<a href="#apply_leave" class="btn bg-purple btn-flat margin" data-toggle="modal"> <i
+								class="fa fa-arrow-circle-up"></i> Apply Leave</a>
+					</div>
+					<div class="box-footer clearfix no-border">
+						<a  [routerLink]="['/main/hrmange/attendance']" style="padding-right:7px" class="btn btn-default"><i class="fa fa-user"></i> My
+							Attendance</a>
+						<a class="btn btn-default pull-right"><i class="fa fa-plus"></i> My Leaves</a>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade in" id="mark_in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"
+	style="display: none;">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form method="post" (submit)="addmarkin(markin)" accept-charset="utf-8" #f="ngForm">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span></button>
+					<h4 class="modal-title" style="position: absolute;">Mark In</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label>Notes</label>
+						<textarea class="form-control" rows="3" name="notes" required [(ngModel)]="markin.notes"
+							#notes="ngModel"></textarea>
+						<span class="err-msg">
+							<div *ngIf="notes.touched">
+								<div *ngIf="notes.errors && notes.errors.required">
+									Notes is required
+								</div>
+							</div>
+						</span>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary" [disabled]="!f.valid">Save</button>
+				</div>
+			</form>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="mark_out" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form method="post" (submit)="addmarkout(markout)" accept-charset="utf-8" #f1="ngForm">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span></button>
+					<h4 class="modal-title" style="position: absolute;">Mark Out</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label>Notes</label>
+						<textarea class="form-control" rows="3" name="notesmarkout" required
+							[(ngModel)]="markout.notesmarkout" #notesmarkout="ngModel"></textarea>
+						<span class="err-msg">
+							<div *ngIf="notesmarkout.touched">
+								<div *ngIf="notesmarkout.errors && notesmarkout.errors.required">
+									Notes is required
+								</div>
+							</div>
+						</span>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary" [disabled]="!f1.valid">Mark Out</button>
+				</div>
+			</form>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade in" id="apply_leave" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+	aria-hidden="false" style="display: none;">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<form  #f2="ngForm" >
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span></button>
+					<h4 class="modal-title" style="position: absolute">Apply Leave</h4>
+				</div>
+				<div class="modal-body input_fields_wrap">
+					<div class="row">
+						<div class="col-xs-3">
+							<input type="date" name="date"  placeholder="Date" class="form-control datepicker"
+							required [(ngModel)]="leaves.date" #date="ngModel">
+						</div>
+						<div class="col-xs-4">
+							<div class="form-group">
+								<select name="leave_id" class="form-control" style="width: 100%;" [(ngModel)]="leaves.leave_id" #leave_id="ngModel">
+									<option value="">-- Select Leave Type</option>
+									<option *ngFor="let item of leavelist;let i = index;" value="{{leavelist[i].id}}">
+										{{leavelist[i].leavetype}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-xs-5">
+							<input type="text" name="reason"  placeholder="Reason" class="form-control"
+							required [(ngModel)]="leaves.reason" #reason="ngModel">
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+					<button type="submit" (click)="applyleaves(leaves)" [disabled]="!f2.valid" class="btn btn-primary">Submit</button>
+				</div>
+			</form>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

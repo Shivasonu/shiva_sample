@@ -1,0 +1,92 @@
+<div class="container">
+  <div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Case Category <small>Add</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+        <li><a [routerLink]="['/main/master/case']">Case Category</a></li>
+        <li class="active">Add</li>
+      </ol>
+    </section>
+
+    <section class="content">
+      <div class="row">
+
+
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <!-- /.box-header -->
+            <!-- form start -->
+
+            <form method="post" #f="ngForm" name="myForm">
+              <div class="box-body">
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <label for="name" style="clear:both;">Category Name </label>
+                      <input type="text" name="name" value="" [(ngModel)]="user.name" #name="ngModel"
+                        class="form-control" required pattern="[a-zA-Z ]*">
+                      <span class="err-msg">
+                        <div *ngIf="name.touched">
+                          <div *ngIf="name.errors && name.errors.required">
+                            Name is required
+                          </div>
+                        </div>
+                      </span>
+                      <span class="err-msg">
+                        <div *ngIf="name.touched">
+                          <div *ngIf="name.errors && name.errors.pattern">
+                            please enter olny Alphabits
+                          </div>
+                        </div>
+                      </span>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="parent_id" style="clear:both;">Parent Category</label>
+                      <select name="parent_id"  class="form-control chzn" [(ngModel)]="user.parent_id" #parent_id="ngModel" >
+                        <option value="" >Please select</option>
+                        <option *ngFor="let item of addcasecategorys;let i = index;" value={{addcasecategorys[i].category_name}}>
+                          {{addcasecategorys[i].category_name}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- /.box-body -->
+              <div class="box-footer">
+                <button type="submit" (click)="addcasecategory(user)" class="btn btn-primary">Save</button>
+              </div>
+            </form>
+          </div><!-- /.box -->
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="modal fade successmechPopup" tabindex="-1" role="dialog">
+    <div class="modal-dialog  modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Casecategory Add</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <i class="fa fa-check fa-2"></i>&nbsp;
+                    <span>Casecategory added sucessfully</span>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" (click)="redirect()" class="btn btn-danger" data-dismiss="modal">close</button>
+            </div>
+        </div>
+    </div>
+  </div>

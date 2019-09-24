@@ -1,0 +1,106 @@
+<div class="container">
+    <section class="content-header">
+        <h1>
+            Tasks <small>Edit</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+            <li><a [routerLink]="['/main/tasks/alltasks']">All Tasks</a></li>
+            <li class="active"><b>Edit</b></li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Edit</h3>
+                    </div><!-- /.box-header -->
+                    <!-- form start -->
+                    <form *ngFor="let item of addtask;let i = index;">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="name" style="clear:both;">Name</label>
+                                        <input type="text" name="name" [(ngModel)]="addtask[i].name" #name="ngModel" class="form-control">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="email" style="clear:both;">Priority</label>
+                                        <select name="priority" [(ngModel)]="addtask[i].priority" #priority="ngModel" class="form-control chzn">
+                                            <option value="">--Select Priority---</option>
+                                            <option value="1">Low</option>
+                                            <option value="2" selected="selected">Medium</option>
+                                            <option value="3">High</option>
+                                        </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="dob" style="clear:both;">Due Date</label>
+                                    <input type="date" name="due_date" [(ngModel)]="addtask[i].due_date" #due_date="ngModel"
+                                        class="form-control datepicker">
+                                </div>                                
+                            </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="case_id" style="clear:both;">Case</label>
+                                        <select name="case_id"  [(ngModel)]="addtask[i].case_id" #case_id="ngModel" class="form-control chzn">
+                                                <!-- <option *ngFor="let item of addcases;let i = index;" [selected]="addcases[i].case_no === addtask[i].case_id " value={{addcases[i].case_no}}>{{addcases[i].case_title}}</option> -->
+                                            <option *ngFor="let item of addcases;let i = index;"  value={{addcases[i].case_no}}>{{addcases[i].case_title}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="employee_id" style="clear:both;">Assigned_to</label>
+                                        <select name="employee_id[]" [(ngModel)]="addtask[i].employee_id" #employee_id="ngModel" class="form-control chzn" multiple="multiple"
+                                            data-placeholder="Select Employees">
+                                            <option *ngFor="let item of addemployee;let i = index;" value={{addemployee[i].id}}>{{addemployee[i].name}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="progress" style="clear:both;">Progress</label>
+                                        <input type="text" [(ngModel)]="addtask[i].progress" #progress="ngModel" name="progress" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="email" style="clear:both;">Description</label>
+                                        <textarea name="description" class="form-control redactor" [(ngModel)]="addtask[i].description" #description="ngModel" dir="ltr"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                        <div class="box-footer">
+                            <button type="submit"  (click)="updatetask(name, priority, due_date, case_id, employee_id, progress, description, id)" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div><!-- /.box -->
+            </div>
+        </div>
+    </section>
+</div>
+<div class="modal fade successmechPopup" tabindex="-1" role="dialog">
+    <div class="modal-dialog  modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Task Update</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <i class="fa fa-check fa-2"></i>&nbsp;
+                    <span>Task Updated sucessfully</span>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" (click)="redirect()" class="btn btn-danger" data-dismiss="modal">close</button>
+            </div>
+        </div>
+    </div>
+  </div>

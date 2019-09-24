@@ -1,0 +1,653 @@
+<section class="content-header">
+  <h1>
+    Holidays <small>List</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a [routerLink]="['/main/dashboard']" ><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+    <li class="active"><b>Holidays</b></li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row" style="margin-bottom:10px;">
+    <div class="col-xs-12">
+      <div class="btn-group pull-right">
+        <a [routerLink]="['/main/hrmange/holidays/addholidays']" class="btn btn-default"><i class="fa fa-plus"></i> Add New</a>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header with-border m-b-20">
+          <h3 class="box-title"> Holidays Of 2019</h3>
+        </div><!-- /.box-header -->
+
+        <div class="row">
+          <div class="col-md-12 m-b-20">
+            <div class="col-md-3">
+              <ul class="nav nav-tabs month-tabs">
+                <li class="col-md-12 active">
+                  <a data-toggle="tab" href="#1" aria-expanded="false">
+                    <i class="fa fa-calendar"></i> January </a>
+                  <span class="after"></span>
+                </li>
+                <li class="col-md-12">
+                  <a data-toggle="tab" href="#2" aria-expanded="false">
+                    <i class="fa fa-calendar"></i> February </a>
+                  <span class="after"></span>
+                </li>
+                <li class="col-md-12 ">
+                  <a data-toggle="tab" href="#3" aria-expanded="false">
+                    <i class="fa fa-calendar"></i> March </a>
+                  <span class="after"></span>
+                </li>
+                <li class="col-md-12 ">
+                  <a data-toggle="tab" href="#4" aria-expanded="false">
+                    <i class="fa fa-calendar"></i> April </a>
+                  <span class="after"></span>
+                </li>
+                <li class="col-md-12 ">
+                  <a data-toggle="tab" href="#5" aria-expanded="false">
+                    <i class="fa fa-calendar"></i> May </a>
+                  <span class="after"></span>
+                </li>
+                <li class="col-md-12 ">
+                  <a data-toggle="tab" href="#6" aria-expanded="false">
+                    <i class="fa fa-calendar"></i> June </a>
+                  <span class="after"></span>
+                </li>
+                <li class="col-md-12 ">
+                  <a data-toggle="tab" href="#7" aria-expanded="false">
+                    <i class="fa fa-calendar"></i> July </a>
+                  <span class="after"></span>
+                </li>
+                <li class="col-md-12">
+                  <a data-toggle="tab" href="#8" aria-expanded="false">
+                    <i class="fa fa-calendar"></i> August </a>
+                  <span class="after"></span>
+                </li>
+                <li class="col-md-12 ">
+                  <a data-toggle="tab" href="#9" aria-expanded="false">
+                    <i class="fa fa-calendar"></i> September </a>
+                  <span class="after"></span>
+                </li>
+                <li class="col-md-12 ">
+                  <a data-toggle="tab" href="#10" aria-expanded="false">
+                    <i class="fa fa-calendar"></i> October </a>
+                  <span class="after"></span>
+                </li>
+                <li class="col-md-12">
+                  <a data-toggle="tab" href="#11" aria-expanded="false">
+                    <i class="fa fa-calendar"></i> November </a>
+                  <span class="after"></span>
+                </li>
+                <li class="col-md-12">
+                  <a data-toggle="tab" href="#12" aria-expanded="false">
+                    <i class="fa fa-calendar"></i> December </a>
+                  <span class="after"></span>
+                </li>
+
+
+              </ul>
+            </div>
+            <div class="col-md-9">
+              <div class="tab-content">
+
+                <div id="1" class="tab-pane active">
+                  <div class="box box-black">
+                    <div class="box-header with-border">
+                      <h3 class="box-title"> <i class="fa fa-calendar"></i> January</h3>
+
+
+                    </div>
+                    <div class="box-body">
+                      <div class="table-scrollable">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th> # </th>
+                              <th> Date </th>
+                              <th> Occasion </th>
+                              <th> Day </th>
+                              <th> Action </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let i = index;let item of addholidaysjan">
+                              <td> {{i+1}} </td>
+                              <td> {{item.dates}}</td>
+                              <td> {{item.name}} </td>
+                              <td> {{item.dayname}}</td>
+                              <td>
+                                <a class="btn btn-danger" style="margin-left:20px;" (click)="deleteholiday(item.id)">
+                                  <i class="fa fa-trash"></i> </a>
+                              </td>
+                            </tr>
+
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="2" class="tab-pane">
+                  <div class="box box-black">
+                    <div class="box-header with-border">
+                      <h3 class="box-title"> <i class="fa fa-calendar"></i> February</h3>
+
+
+                    </div>
+                    <div class="box-body">
+                      <div class="table-scrollable">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th> # </th>
+                              <th> Date </th>
+                              <th> Occasion </th>
+                              <th> Day </th>
+                              <th> Action </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let i = index;let item of addholidaysfeb">
+                                  <td> {{i+1}} </td>
+                                  <td> {{item.dates}}</td>
+                                  <td> {{item.name}} </td>
+                                  <td> {{item.dayname}}</td>
+                                  <td>
+                                    <a class="btn btn-danger" style="margin-left:20px;" (click)="deleteholiday(item.id)">
+                                      <i class="fa fa-trash"></i> </a>
+                                  </td>
+                                </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="3" class="tab-pane ">
+                  <div class="box box-black">
+                    <div class="box-header with-border">
+                      <h3 class="box-title"> <i class="fa fa-calendar"></i> March</h3>
+
+
+                    </div>
+                    <div class="box-body">
+                      <div class="table-scrollable">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th> # </th>
+                              <th> Date </th>
+                              <th> Occasion </th>
+                              <th> Day </th>
+                              <th> Action </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let i = index;let item of addholidaysmar">
+                                  <td> {{i+1}} </td>
+                                  <td> {{item.dates}}</td>
+                                  <td> {{item.name}} </td>
+                                  <td> {{item.dayname}}</td>
+                                  <td>
+                                    <a class="btn btn-danger" style="margin-left:20px;" (click)="deleteholiday(item.id)">
+                                      <i class="fa fa-trash"></i> </a>
+                                  </td>
+                                </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="4" class="tab-pane ">
+                  <div class="box box-black">
+                    <div class="box-header with-border">
+                      <h3 class="box-title"> <i class="fa fa-calendar"></i> April</h3>
+
+
+                    </div>
+                    <div class="box-body">
+                      <div class="table-scrollable">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th> # </th>
+                              <th> Date </th>
+                              <th> Occasion </th>
+                              <th> Day </th>
+                              <th> Action </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let i = index;let item of addholidaysapr">
+                                  <td> {{i+1}} </td>
+                                  <td> {{item.dates}}</td>
+                                  <td> {{item.name}} </td>
+                                  <td> {{item.dayname}}</td>
+                                  <td>
+                                    <a class="btn btn-danger" style="margin-left:20px;" (click)="deleteholiday(item.id)">
+                                      <i class="fa fa-trash"></i> </a>
+                                  </td>
+                                </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="5" class="tab-pane ">
+                  <div class="box box-black">
+                    <div class="box-header with-border">
+                      <h3 class="box-title"> <i class="fa fa-calendar"></i> May</h3>
+
+
+                    </div>
+                    <div class="box-body">
+                      <div class="table-scrollable">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th> # </th>
+                              <th> Date </th>
+                              <th> Occasion </th>
+                              <th> Day </th>
+                              <th> Action </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let i = index;let item of addholidaysmay">
+                                  <td> {{i+1}} </td>
+                                  <td> {{item.dates}}</td>
+                                  <td> {{item.name}} </td>
+                                  <td> {{item.dayname}}</td>
+                                  <td>
+                                    <a class="btn btn-danger" style="margin-left:20px;" (click)="deleteholiday(item.id)">
+                                      <i class="fa fa-trash"></i> </a>
+                                  </td>
+                                </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="6" class="tab-pane ">
+                  <div class="box box-black">
+                    <div class="box-header with-border">
+                      <h3 class="box-title"> <i class="fa fa-calendar"></i> June</h3>
+
+
+                    </div>
+                    <div class="box-body">
+                      <div class="table-scrollable">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th> # </th>
+                              <th> Date </th>
+                              <th> Occasion </th>
+                              <th> Day </th>
+                              <th> Action </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let i = index;let item of addholidaysjun">
+                                  <td> {{i+1}} </td>
+                                  <td> {{item.dates}}</td>
+                                  <td> {{item.name}} </td>
+                                  <td> {{item.dayname}}</td>
+                                  <td>
+                                    <a class="btn btn-danger" style="margin-left:20px;" (click)="deleteholiday(item.id)">
+                                      <i class="fa fa-trash"></i> </a>
+                                  </td>
+                                </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="7" class="tab-pane ">
+                  <div class="box box-black">
+                    <div class="box-header with-border">
+                      <h3 class="box-title"> <i class="fa fa-calendar"></i> July</h3>
+
+
+                    </div>
+                    <div class="box-body">
+                      <div class="table-scrollable">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th> # </th>
+                              <th> Date </th>
+                              <th> Occasion </th>
+                              <th> Day </th>
+                              <th> Action </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let i = index;let item of addholidaysjul">
+                                  <td> {{i+1}} </td>
+                                  <td> {{item.dates}}</td>
+                                  <td> {{item.name}} </td>
+                                  <td> {{item.dayname}}</td>
+                                  <td>
+                                    <a class="btn btn-danger" style="margin-left:20px;" (click)="deleteholiday(item.id)">
+                                      <i class="fa fa-trash"></i> </a>
+                                  </td>
+                                </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="8" class="tab-pane">
+                  <div class="box box-black">
+                    <div class="box-header with-border">
+                      <h3 class="box-title"> <i class="fa fa-calendar"></i> August</h3>
+
+
+                    </div>
+                    <div class="box-body">
+                      <div class="table-scrollable">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th> # </th>
+                              <th> Date </th>
+                              <th> Occasion </th>
+                              <th> Day </th>
+                              <th> Action </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let i = index;let item of addholidaysaug">
+                                  <td> {{i+1}} </td>
+                                  <td> {{item.dates}}</td>
+                                  <td> {{item.name}} </td>
+                                  <td> {{item.dayname}}</td>
+                                  <td>
+                                    <a class="btn btn-danger" style="margin-left:20px;" (click)="deleteholiday(item.id)">
+                                      <i class="fa fa-trash"></i> </a>
+                                  </td>
+                                </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="9" class="tab-pane ">
+                  <div class="box box-black">
+                    <div class="box-header with-border">
+                      <h3 class="box-title"> <i class="fa fa-calendar"></i> September</h3>
+
+
+                    </div>
+                    <div class="box-body">
+                      <div class="table-scrollable">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th> # </th>
+                              <th> Date </th>
+                              <th> Occasion </th>
+                              <th> Day </th>
+                              <th> Action </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let i = index;let item of addholidayssep">
+                                  <td> {{i+1}} </td>
+                                  <td> {{item.dates}}</td>
+                                  <td> {{item.name}} </td>
+                                  <td> {{item.dayname}}</td>
+                                  <td>
+                                    <a class="btn btn-danger" style="margin-left:20px;" (click)="deleteholiday(item.id)">
+                                      <i class="fa fa-trash"></i> </a>
+                                  </td>
+                                </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="10" class="tab-pane ">
+                  <div class="box box-black">
+                    <div class="box-header with-border">
+                      <h3 class="box-title"> <i class="fa fa-calendar"></i> October</h3>
+
+
+                    </div>
+                    <div class="box-body">
+                      <div class="table-scrollable">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th> # </th>
+                              <th> Date </th>
+                              <th> Occasion </th>
+                              <th> Day </th>
+                              <th> Action </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let i = index;let item of addholidaysoct">
+                                  <td> {{i+1}} </td>
+                                  <td> {{item.dates}}</td>
+                                  <td> {{item.name}} </td>
+                                  <td> {{item.dayname}}</td>
+                                  <td>
+                                    <a class="btn btn-danger" style="margin-left:20px;" (click)="deleteholiday(item.id)">
+                                      <i class="fa fa-trash"></i> </a>
+                                  </td>
+                                </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="11" class="tab-pane">
+                  <div class="box box-black">
+                    <div class="box-header with-border">
+                      <h3 class="box-title"> <i class="fa fa-calendar"></i> November</h3>
+
+
+                    </div>
+                    <div class="box-body">
+                      <div class="table-scrollable">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th> # </th>
+                              <th> Date </th>
+                              <th> Occasion </th>
+                              <th> Day </th>
+                              <th> Action </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let i = index;let item of addholidaysnov">
+                                  <td> {{i+1}} </td>
+                                  <td> {{item.dates}}</td>
+                                  <td> {{item.name}} </td>
+                                  <td> {{item.dayname}}</td>
+                                  <td>
+                                    <a class="btn btn-danger" style="margin-left:20px;" (click)="deleteholiday(item.id)">
+                                      <i class="fa fa-trash"></i> </a>
+                                  </td>
+                                </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="12" class="tab-pane">
+                  <div class="box box-black">
+                    <div class="box-header with-border">
+                      <h3 class="box-title"> <i class="fa fa-calendar"></i> December</h3>
+
+
+                    </div>
+                    <div class="box-body">
+                      <div class="table-scrollable">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th> # </th>
+                              <th> Date </th>
+                              <th> Occasion </th>
+                              <th> Day </th>
+                              <th> Action </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let i = index;let item of addholidaysdec">
+                                  <td> {{i+1}} </td>
+                                  <td> {{item.dates}}</td>
+                                  <td> {{item.name}} </td>
+                                  <td> {{item.dayname}}</td>
+                                  <td>
+                                    <a class="btn btn-danger" style="margin-left:20px;" (click)="deleteholiday(item.id)">
+                                      <i class="fa fa-trash"></i> </a>
+                                  </td>
+                                </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END PAGE CONTENT-->
+
+
+        <div id="static" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title"><strong>Holidays</strong></h4>
+              </div>
+              <div class="modal-body">
+                <div class="portlet-body form">
+
+                  <!-- BEGIN FORM-->
+                  <form method="POST" accept-charset="UTF-8" class="form-horizontal "><input name="_token" type="hidden"
+                      value="Hc0WfGdaSPQn4GnW7gpyKWfrPJQYh9AbuAMDo2Oo">
+
+
+                    <div class="form-body">
+
+                      <div class="form-group">
+                        <div class="col-md-6">
+                          <input class="form-control form-control-inline input-medium date-picker" name="date[0]"
+                            type="text" value="" placeholder="Date">
+
+                        </div>
+                        <div class="col-md-6">
+                          <input class="form-control form-control-inline" type="text" name="occasion[0]"
+                            placeholder="Occasion">
+                        </div>
+                      </div>
+                      <div id="insertBefore"></div>
+                      <button type="button" id="plusButton" class="btn btn-sm green form-control-inline">
+                        Add More <i class="fa fa-plus"></i>
+                      </button>
+
+                    </div>
+
+                    <div class="form-actions">
+                      <div class="row">
+                        <div class="col-md-offset-3 col-md-9">
+                          <button type="submit" data-loading-text="Submitting..." class="demo-loading-btn btn green"><i
+                              class="fa fa-check"></i> Submit</button>
+
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  <!-- END FORM-->
+                </div>
+              </div>
+              <!-- END EXAMPLE TABLE PORTLET-->
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.box-body -->
+  </div><!-- /.box -->
+</section>
+
+<div class="modal fade deleteRequest" tabindex="-1" role="dialog">
+  <div class="modal-dialog  modal-sm" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Delete Request</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <p>
+                  <i class="fa fa-check fa-2"></i>
+                  <span>&nbsp;Are you sure Want to Delete ?</span>
+              </p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-success" (click)=" deleteholidays()">Yes</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade successmechPopup" tabindex="-1" role="dialog">
+      <div class="modal-dialog  modal-sm" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title" id="myModalLabel">Holiday Delete</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <p>
+                      <i class="fa fa-check fa-2"></i>&nbsp;
+                      <span>Holiday Deleted sucessfully</span>
+                  </p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">close</button>
+              </div>
+          </div>
+      </div>
+    </div>

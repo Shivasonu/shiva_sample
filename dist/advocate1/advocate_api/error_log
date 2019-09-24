@@ -1,0 +1,2 @@
+[08-Jan-2019 16:57:04 UTC] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'advocate_dbuser'@'localhost' (using password: YES) in /home/zizkn5zuvxtz/public_html/ajanthaspicemagic.com/angular/advocate/advocate_api/connect.php on line 12
+[08-Jan-2019 16:57:40 UTC] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'advocate_dbuser'@'localhost' (using password: YES) in /home/zizkn5zuvxtz/public_html/ajanthaspicemagic.com/angular/advocate/advocate_api/connect.php on line 12

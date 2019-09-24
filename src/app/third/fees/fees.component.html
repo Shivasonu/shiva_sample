@@ -1,0 +1,345 @@
+<section class="content-header">
+  <h1>
+    Fees <small></small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+    <li><a [routerLink]="['/main/cases/allcases']">Cases</a></li>
+    <li class="active">Fees</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="col-md-12">
+    <!-- left column -->
+    <div class="row">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-body">
+          <div class="box-body no-padding">
+            <table class="table table-striped" border="1">
+              <tbody>
+                <tr>
+                  <th width="25%">Case No</th>
+                  <td width="25%">Z2223</td>
+                  <th width="25%">Case Title</th>
+                  <td width="25%">Assult</td>
+                </tr>
+                <tr>
+                  <th width="25%">Fee Agreed </th>
+                  <td width="25%">10000.00</td>
+                  <th width="25%">Paid</th>
+                  <td width="25%">5000.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tabbable" style="padding-top:12px;">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#1" data-toggle="tab">Invoice</a></li>
+              <li class=""><a href="#2" data-toggle="tab">Receipt</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="1">
+                <!-- form start -->
+                <form method="post" enctype="multipart/form-data">
+                  <input type="hidden" name="inr" id="inr" value="10000.00">
+                  <input type="hidden" name="bal" id="bal" value="5000.00">
+                  <div class="form-group" style="margin-top:20px;">
+                    <legend>Add Payment Details</legend>
+                  </div>
+                  <div class="form-group" style="margin-top:20px;">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <b>Invoice Number</b>
+                      </div>
+                      <div class="col-md-4">
+                        <input type="text" name="invoice_no" value="2" class="form-control" readonly="readonly">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <b>Payment Mode</b>
+                      </div>
+                      <div class="col-md-4">
+                        <select name="payment_mode_id" class="form-control">
+                          <option value="">--Select Payment Mode --</option>
+                          <option value="1">Mpesa</option>
+                          <option value="2">Cash</option>
+                          <option value="3">Cheque</option>
+                          <option value="4">Pro Bono</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <b>Date</b>
+                      </div>
+                      <div class="col-md-4">
+                        <input type="text" name="date" value="" class="form-control datepicker">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group" style="margin-top:20px;">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <b>Amount</b>
+                      </div>
+                      <div class="col-md-4">
+                        <input type="text" name="amount" value="" id="amount" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group input_fields_wrap">
+                    <div class="row  ">
+                      <div class="col-md-3">
+                        <b>Tax</b>
+                      </div>
+                      <div class="col-md-4">
+                        <div>
+                          <select name="tax_id[]" class="form-control tax" required="" id="tax1">
+                            <option value="">-- Select Tax --</option>
+                            <option value="1">Itax - 10 </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-md-offset-2" style="padding-left:12px;">
+                            <button class="add_field_button btn btn-success">Add More </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <b>Total</b>
+                      </div>
+                      <div class="col-md-4">
+                        <input type="text" name="total" value="" class="form-control" id="total" readonly="readonly">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                  </div>
+                </form>
+                <div class="box-body table-responsive" style="margin-top:10px;">
+                  <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                    <div class="col-sm-12">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="dataTables_length" id="example2_length"><label>Show <select name="example2_length"
+                                aria-controls="example2" class="form-control input-sm">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                              </select> entries</label></div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div id="example2_filter" class="dataTables_filter"><label>Search:<input type="search"
+                                class="form-control input-sm" placeholder="" aria-controls="example2"></label></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="row">
+                        <table id="example2"
+                          class="table table-bordered table-striped table-mailbox dataTable no-footer" role="grid"
+                          aria-describedby="example2_info">
+                          <thead>
+                            <tr role="row">
+                              <th width="5%" class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
+                                colspan="1" aria-sort="ascending" aria-label="Sr No: activate to sort column descending"
+                                style="width: 18px;">Sr No</th>
+                              <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="Invoice: activate to sort column ascending">Invoice
+                              </th>
+                              <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="Date: activate to sort column ascending">Date</th>
+                              <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="Amount: activate to sort column ascending">Amount</th>
+                              <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="Payment Mode: activate to sort column ascending">
+                                Payment Mode</th>
+                              <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label=": activate to sort column ascending"></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="gc_row odd" role="row">
+                              <td class="sorting_1">1</td>
+                              <td>1</td>
+                              <td>2018-07-01</td>
+                              <td>5000.00</td>
+                              <td>Cash</td>
+                              <td>
+                                <a class="btn btn-default" style="margin-left:20px;">
+                                  <i class="fa fa-list"></i> Invoice</a>
+                                <a class="btn btn-danger" style="margin-left:20px;"><i class="fa fa-trash"></i>
+                                  Delete</a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="row">
+                        <div class="col-sm-5">
+                          <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to
+                            1
+                            of 1 entries</div>
+                        </div>
+                        <div class="col-sm-7">
+                          <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                            <ul class="pagination">
+                              <li class="paginate_button previous disabled" id="example2_previous"><a href="#"
+                                  aria-controls="example2" data-dt-idx="0" tabindex="0">Previous</a></li>
+                              <li class="paginate_button active"><a href="#" aria-controls="example2" data-dt-idx="1"
+                                  tabindex="0">1</a></li>
+                              <li class="paginate_button next disabled" id="example2_next"><a href="#"
+                                  aria-controls="example2" data-dt-idx="2" tabindex="0">Next</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="2">
+                <!-- form start -->
+                <form method="post" enctype="multipart/form-data">
+                  <input type="hidden" name="case_id" value="1">
+                  <div class="form-group" style="margin-top:20px;">
+                    <legend>Add Receipt Details</legend>
+                  </div>
+                  <div class="form-group" style="margin-top:20px;">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <b>Invoice</b>
+                      </div>
+                      <div class="col-md-4">
+                        <select name="fees_id" class="form-control" required="">
+                          <option value="">--Select Invoice--</option>
+                          <option value="1">1</option>
+                        </select>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <b>Date</b>
+                      </div>
+                      <div class="col-md-4">
+                        <input type="text" name="r_date" value="" class="form-control datepicker" required="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group" style="margin-top:20px;">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <b>Amount</b>
+                      </div>
+                      <div class="col-md-4">
+                        <input type="text" name="r_amount" value="" id="r_amount" class="form-control" required="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                  </div>
+                </form>
+                <div class="box-body table-responsive" style="margin-top:10px;">
+                  <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                    <div class="col-sm-12">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="dataTables_length" id="example1_length"><label>Show <select name="example1_length"
+                                aria-controls="example1" class="form-control input-sm">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                              </select> entries</label></div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search"
+                                class="form-control input-sm" placeholder="" aria-controls="example1"></label></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="row">
+                        <table id="example1"
+                          class="table table-bordered table-striped table-mailbox dataTable no-footer" role="grid"
+                          aria-describedby="example1_info">
+                          <thead>
+                            <tr role="row">
+                              <th width="5%" class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                colspan="1" aria-sort="ascending" aria-label="Sr No: activate to sort column descending"
+                                style="width: 5px;">Sr No</th>
+                              <th tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Date: activate to sort column ascending">Date</th>
+                              <th tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Amount: activate to sort column ascending">Amount</th>
+                              <th tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label=": activate to sort column ascending"></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="gc_row odd" role="row">
+                              <td class="sorting_1">1</td>
+                              <td>2018-07-02</td>
+                              <td>5000.00</td>
+                              <td>
+                                <a class="btn btn-default" style="margin-left:20px;"><i class="fa fa-list"></i>
+                                  Receipt</a>
+                                <a class="btn btn-danger" style="margin-left:20px;" onclick="return areyousure()"><i
+                                    class="fa fa-trash"></i> Delete</a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="row">
+                        <div class="col-sm-5">
+                          <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to
+                            1
+                            of 1 entries</div>
+                        </div>
+                        <div class="col-sm-7">
+                          <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                            <ul class="pagination">
+                              <li class="paginate_button previous disabled" id="example1_previous"><a href="#"
+                                  aria-controls="example1" data-dt-idx="0" tabindex="0">Previous</a></li>
+                              <li class="paginate_button active"><a href="#" aria-controls="example1" data-dt-idx="1"
+                                  tabindex="0">1</a></li>
+                              <li class="paginate_button next disabled" id="example1_next"><a href="#"
+                                  aria-controls="example1" data-dt-idx="2" tabindex="0">Next</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /.box-body -->
+      </div><!-- /.box-body -->
+    </div><!-- /.box -->
+  </div>
+</section>

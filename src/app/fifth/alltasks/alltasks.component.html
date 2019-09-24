@@ -1,0 +1,169 @@
+<div class="container">
+
+  <section class="content-header">
+    <h1>
+     All Tasks <small>List</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+      <li class="active"><b>All Tasks</b></li>
+    </ol>
+  </section>
+
+  <section class="content">
+    <div class="row" style="margin-bottom:10px;">
+      <div class="col-xs-12">
+        <div class="btn-group pull-right">
+
+          <a [routerLink]="['/main/tasks/addtasks']" class="btn btn-default"><i class="fa fa-plus"></i> Add New</a>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+         <!-- /.box-header -->
+
+          <div class="box-body table-responsive">
+            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+              <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                       
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="example1_filter" class="dataTables_filter">
+                            <label>Search:<input type="search" class="form-control input-sm" placeholder=""
+                                    aria-controls="example1" [(ngModel)]="searchText"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              <div class="col-sm-12">
+                <div class="row">
+                  <table id="example1" class="table table-bordered table-striped dataTable no-footer" role="grid"
+                    aria-describedby="example1_info">
+                    <thead>
+                      <tr role="row">
+                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-sort="ascending" aria-label="Sr No: activate to sort column descending"
+                          style="width: 63px;">Sr No</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-label="Name: activate to sort column ascending" style="width: 66px;">Name</th>
+                        <th width="12px;" class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-label="Priority: activate to sort column ascending" style="width: 48px;">Priority</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-label="Due Date: activate to sort column ascending" style="width: 153px;">Due Date</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-label="Created By: activate to sort column ascending" style="width: 148px;">Created By
+                        </th>
+                        <th width="20%" class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-label="Action: activate to sort column ascending" style="width: 373px;">Action</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+
+                      <tr class="gc_row odd" role="row" *ngFor="let i = index;let item of addtask | filter:searchText | paginate: { itemsPerPage: 10, currentPage: p }">
+                        <td class="sorting_1">{{ (p - 1) * 10 + i +1 }}</td>
+                        <td>{{item.name}}</td>
+                        <td><small>
+                          <p class="label pull-right bg-yellow" *ngIf="item.priority==1">Low</p>
+                          <p class="label pull-right bg-orange" *ngIf="item.priority==2">Medium</p>
+                          <p class="label pull-right bg-red" *ngIf="item.priority==3">High</p>
+                        </small></td>
+                        <td>{{item.due_date}}  </td>
+                        <!-- <small class="label pull-right bg-red">Over Due</small> -->
+                        <td>{{item.created_by}} <small class="label pull-right bg-blue">Admin</small></td>
+                        <td width="50%">
+                          <div class="btn-group">
+                            <a [routerLink]="['/main/tasks/viewtasks', item.id]" class="btn btn-default"><i
+                                class="fa fa-eye"></i> View</a>
+                            <a [routerLink]="['/main/tasks/edittasks', item.id]" class="btn btn-primary"
+                              style="margin-left:12px;"><i class="fa fa-edit"></i> Edit</a>
+                              <a class="btn btn-danger" style="margin-left:20px;"
+                              (click)="deletetask(item.id)"><i
+                                  class="fa fa-trash"></i> Delete</a>
+                            <a [routerLink]="['/main/tasks/commenttasks', item.id]" class="btn btn-warning"
+                              style="margin-left:20px;"><i class="fa fa-comments"></i> Comments</a>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-sm-5">
+
+                  </div>
+                  <div class="col-sm-7" style="text-align: right;">
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /.box-body -->
+        </div><!-- /.box -->
+      </div>
+    </div>
+  </section>
+
+  <script type="text/javascript">
+    $(function () {
+      $('#example1').dataTable({
+      });
+    });
+
+  </script>
+</div>
+
+<div class="modal fade deleteRequest" tabindex="-1" role="dialog">
+  <div class="modal-dialog  modal-sm" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Delete Request</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <p>
+                  <i class="fa fa-check fa-2"></i>
+                  <span>&nbsp;Are you sure Want to Delete ?</span>
+              </p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-success" (click)=" deletetaskdata()">Yes</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade successmechPopup" tabindex="-1" role="dialog">
+      <div class="modal-dialog  modal-sm" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title" id="myModalLabel">Task Delete</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <p>
+                      <i class="fa fa-check fa-2"></i>&nbsp;
+                      <span>Task Deleted sucessfully</span>
+                  </p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">close</button>
+              </div>
+          </div>
+      </div>
+    </div>

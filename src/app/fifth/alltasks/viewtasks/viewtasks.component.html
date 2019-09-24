@@ -1,0 +1,129 @@
+<div class="container">
+
+  <section class="content-header">
+    <h1>
+      Tasks <small>View</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+      <li><a [routerLink]="['/main/tasks/alltasks']">All Tasks</a></li>
+      <li class="active"><b>View</b></li>
+    </ol>
+  </section>
+
+  <section class="content">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+              <div class="box-body" *ngFor="let item of addtask;let i = index;">
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <label for="name" style="clear:both;">Name</label>
+                    </div>
+                    <div class="col-md-4">
+                      {{item.name}} </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <label for="email" style="clear:both;">Priority</label>
+
+                    </div>
+                    <div class="col-md-4">
+
+                        {{item.priority}} </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <label for="dob" style="clear:both;">Due Date</label>
+                    </div>
+                    <div class="col-md-4">
+                        {{item.due_date}}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <label for="case_id" style="clear:both;">Case</label>
+                    </div>
+                    <div class="col-md-4">
+                        {{item.case_id}}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <label for="employee_id" style="clear:both;">Assigned_to</label>
+                    </div>
+                    <div class="col-md-4">
+                        {{item.created_by}} </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <label for="progress" style="clear:both;">Progress</label>
+                    </div>
+                    <div class="col-md-4">
+                      <div>
+                          <div class="col-sm-3 col-md-2">
+                            <div class="progress " data-percentage= ''>
+                            <span class="progress-left">
+                            <span class="progress-bar"></span>
+                            </span>
+                            <span class="progress-right">
+                            <span class="progress-bar"></span>
+                            </span>
+                            <div class="progress-value">
+                            <div>
+                            {{item.progress}}%<br>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <label for="email" style="clear:both;">Description</label>
+                    </div>
+                    <div class="col-md-7">{{item.description}}
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+              </div><!-- /.box-body -->
+
+
+            </div><!-- /.box -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

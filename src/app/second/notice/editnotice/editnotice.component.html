@@ -1,0 +1,69 @@
+<div class="container">
+    <section class="content-header">
+        <h1>
+            Notice Board <small>Edit</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+            <li><a [routerLink]="['/main/hrmange/notice']">Notice</a></li>
+            <li class="active"><b>Edit</b></li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <!-- form start -->
+            <form *ngFor="let item of addnotices;let i = index;">   
+                               <div class="box-body">
+                            <div class="box-body">
+                            <div class="form-group">
+                              <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="name" style="clear:both;"> Title</label>
+                      <input type="text" name="title" [(ngModel)]="addnotices[i].title" #title="ngModel" [ngModelOptions]="{standalone: true}" class="form-control">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="name" style="clear:both;">Description</label>
+                      <textarea name="description" class="form-control" [(ngModel)]="addnotices[i].description" #description="ngModel" [ngModelOptions]="{standalone: true}"></textarea>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="name" style="clear:both;">Date</label>
+                      <input type="date" name="date_time" [(ngModel)]="addnotices[i].date_time" #date_time="ngModel" [ngModelOptions]="{standalone: true}" class="form-control datetimepicker">
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary" (click)="updatenotice(title, description, date_time, item.id)">Update</button>
+                        </div>
+                             </div><!-- /.box -->
+            </form></div>
+         </div>
+    </div></section>
+</div>
+
+<div class="modal fade successmechPopup" tabindex="-1" role="dialog">
+    <div class="modal-dialog  modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Notice Update</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <i class="fa fa-check fa-2"></i>&nbsp;
+                    <span>Notice Updated sucessfully</span>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" (click)="redirect()" class="btn btn-danger" data-dismiss="modal">close</button>
+            </div>
+        </div>
+    </div>
+  </div>

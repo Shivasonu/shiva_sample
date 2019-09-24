@@ -1,0 +1,116 @@
+<div class="container">
+    <section class="content-header">
+        <h1>
+            Case Study <small>Edit</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+            <li><a [routerLink]="['/main/casestudy']">Case Study</a></li>
+            <li class="active">Edit</li>
+        </ol>
+    </section>
+
+    <section class="content">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                   <!-- /.box-header -->
+                    <!-- form start -->
+                    <form  *ngFor="let item of addcasess;let i = index;">
+                        <div class="box-body">
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label for="name" style="clear:both;"> Title</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" name="title" [(ngModel)]="addcasess[i].title"
+                                         #title="ngModel" [ngModelOptions]="{standalone: true}" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <b>Case Category</b>
+                                    </div>
+                                    <div class="col-md-4">
+                                            <ng-multiselect-dropdown [placeholder]="'Select an Category'" [data]="dropdownList1"
+                                              [settings]="dropdownSettings1" name="case_category_id" [(ngModel)]="addcasess[i].case_category_id"
+                                              #case_category_id="ngModel" required>
+                                            </ng-multiselect-dropdown>
+                                            <span class="err-msg">
+                                              <div *ngIf="case_category_id.touched">
+                                                  <div *ngIf="case_category_id.errors && case_category_id.errors.required">
+                                                    Case Category is required
+                                                  </div>
+                                              </div>
+                                          </span>
+                                          </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <b>Notes </b>
+                                    </div>
+                                    <div class="col-md-8">
+                                            <angular-editor [(ngModel)]="addcasess[i].notes"
+                                            #notes="ngModel" [ngModelOptions]="{standalone: true}"  [config]="config"></angular-editor> 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <b>Result </b>
+                                    </div>
+                                    <div class="col-md-8">
+                                            <angular-editor [(ngModel)]="addcasess[i].result"
+                                            #result="ngModel" [ngModelOptions]="{standalone: true}" [config]="config"></angular-editor>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div><!-- /.box-body -->
+
+                        <div class="box-footer">
+                            <button type="submit" (click)="updateclients(title, case_category_id, notes, result,  item.id)" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div><!-- /.box -->
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<div class="modal fade successmechPopup" tabindex="-1" role="dialog">
+    <div class="modal-dialog  modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Case Study Update</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <i class="fa fa-check fa-2"></i>&nbsp;
+                    <span>Case Study Updated sucessfully</span>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" (click)="redirect()" class="btn btn-danger" data-dismiss="modal">close</button>
+            </div>
+        </div>
+    </div>
+  </div>

@@ -1,0 +1,181 @@
+<div class="container">
+    <section class="content-header">
+        <h1>
+            Extended Date's Of Case No : Z2223 <small>Assult</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+            <li><a [routerLink]="['/main/cases/allcases']">Cases</a></li>
+            <li class="active">Extended Dates</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+
+                    <!-- form start -->
+
+                    <form #f="ngForm" name="myForm">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <b>Next Date</b>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        <input type="date" name="nextdate" [(ngModel)]="user.nextdate" #nextdate="ngModel"class="form-control datepicker">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <b>Last Date</b>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        <input type="date" name="lastdate" [(ngModel)]="user.lastdate" #lastdate="ngModel" class="form-control datepicker">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <b>Notes</b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <textarea name="notes" [(ngModel)]="user.notes"
+                                        #notes="ngModel" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <b>Attachement Document</b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="file" name="file" id="file" multiple (change)="getFileDetails($event)"class="form-control" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div><!-- /.box-body -->
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4 offset-md-2">
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-primary" (click)="addhearing(user)"
+                                        ng-disabled="myForm.$invalid" [disabled]="!f.valid">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="box-body table-responsive" style="margin-top:10px">
+                            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                           
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div id="example1_filter" class="dataTables_filter">
+                                                <label>Search:<input type="search" class="form-control input-sm" placeholder=""
+                                                        aria-controls="example1" ></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <table id="example1"
+                                            class="table table-bordered table-striped table-mailbox dataTable no-footer"
+                                            role="grid" aria-describedby="example1_info">
+                                            <thead>
+                                                <tr role="row">
+                                                    <th width="5%" class="sorting_asc" tabindex="0"
+                                                        aria-controls="example1" rowspan="1" colspan="1"
+                                                        aria-sort="ascending"
+                                                        aria-label="Sr No: activate to sort column descending"
+                                                        style="width: 18px;">Sr No</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example1"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Next Date: activate to sort column ascending"
+                                                        style="width: 158px;">Next Date</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example1"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Last Date: activate to sort column ascending"
+                                                        style="width: 155px;">Last Date</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example1"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Notes: activate to sort column ascending"
+                                                        style="width: 111px;">Notes</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example1"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Attachement: activate to sort column ascending"
+                                                        style="width: 217px;">Attachement</th>
+                                                    <th width="20%" class="sorting" tabindex="0"
+                                                        aria-controls="example1" rowspan="1" colspan="1"
+                                                        aria-label="Action: activate to sort column ascending"
+                                                        style="width: 175px;">Action</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+
+                                                <tr class="gc_row odd" role="row" 
+                                                *ngFor="let i = index;let item of addcases | filter:searchText | paginate: { itemsPerPage: 10, currentPage: p }">
+                                                    <td class="sorting_1">{{ (p - 1) * 10 + i +1 }}</td>
+                                                    <td>{{item.next_date}}</td>
+                                                    <td>{{item.last_date}}</td>
+                                                    <td>{{item.notes}}</td>
+                                                    <td> <a class="btn btn-default" target="_blank"><i
+                                                                class="fa fa-download"></i> Attachment</a>
+
+                                                    </td>
+
+                                                    <td width="30%">
+
+                                                        <a class="btn btn-primary"
+                                                            [routerLink]="['/main/cases/hearingdetails', item.id]"><i
+                                                                class="fa fa-eye"></i> View</a>
+
+                                                        <a class="btn btn-danger" style="margin-left:20px;"
+                                                        (click)="deletehearing(item.id)"><i class="fa fa-trash"></i>
+                                                            Delete</a>
+
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-sm-5">
+
+                                        </div>
+                                        <div class="col-sm-7" style="text-align: right;">
+                                            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </form>
+                </div><!-- /.box -->
+            </div>
+        </div>
+    </section>
+</div>

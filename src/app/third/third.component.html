@@ -1,0 +1,221 @@
+<div class="container">
+  <section class="content-header">
+    <h1>
+      Case <small>List</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+      <li class="active">Case</li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row" style="margin-bottom:10px;">
+      <div class="col-xs-12">
+        <div class="btn-group pull-right">
+
+          <a class="btn btn-default"><i class="fa fa-plus"></i> Add New</a>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="margin-bottom:10px;">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-2">
+            <select name="filter" id="client_id" class="form-control chzn">
+              <option>--Filter By Client--</option>
+              <option value="2">DICKENS MWENDA</option>
+              <option value="3">Kennedy Sendwa</option>
+              <option value="7">kal</option>
+            </select>
+          </div>
+
+          <div class="col-xs-2">
+            <select name="filter_court" id="court_id" class="form-control chzn">
+              <option>--Filter By Court--</option>
+              <option value="1">Court Room 12</option>
+            </select>
+          </div>
+
+          <div class="col-xs-2">
+            <select name="filter_location" id="location_id" class="form-control chzn">
+              <option>--Filter By Location--</option>
+              <option value="1">Kibera</option>
+              <option value="2">Nairobi CBD</option>
+            </select>
+          </div>
+
+          <div class="col-xs-2">
+            <select name="filter_location" id="case_stage_id" class="form-control chzn">
+              <option>--Filter By Case Stages--</option>
+              <option value="1">Filing of Case</option>
+              <option value="2">Written Statement of defense</option>
+              <option value="3">Replication</option>
+              <option value="4">Rejoinder</option>
+              <option value="5">Considerations</option>
+              <option value="6">Settlement of issues</option>
+              <option value="7">Court hearing</option>
+              <option value="8">Cross Examination</option>
+              <option value="9">Evidence by Defendants</option>
+              <option value="10">Rebuttal Evidence</option>
+              <option value="11">Arguments</option>
+              <option value="12">Order Suit</option>
+              <option value="13">First Replies</option>
+            </select>
+          </div>
+
+          <div class="col-xs-2">
+            <input type="date" name="date1" id="date1" class="form-control datepicker" placeholder="Filling Date">
+          </div>
+
+          <div class="col-xs-2">
+            <input type="date" name="date2" id="date2" class="form-control datepicker" placeholder="Hearing Date">
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-header with-border">
+            <h3 class="box-title">Case</h3>
+          </div><!-- /.box-header -->
+
+          <div class="box-body table-responsive" id="result">
+            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="dataTables_length" id="example1_length"><label>Show <select name="example1_length"
+                          aria-controls="example1" class="form-control input-sm">
+                          <option value="10">10</option>
+                          <option value="25">25</option>
+                          <option value="50">50</option>
+                          <option value="100">100</option>
+                        </select> entries</label></div>
+                  </div>
+                  <div class="col-sm-3 offset-sm-6">
+                    <div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search"
+                          class="form-control input-sm" placeholder="" aria-controls="example1"></label></div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-sm-12" style="margin-top: 10px">
+                <div class="row">
+                  <table id="example1" class="table table-bordered table-striped table-mailbox dataTable no-footer"
+                    role="grid" aria-describedby="example1_info">
+                    <thead>
+                      <tr role="row">
+                        <th width="5%" class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-sort="ascending" aria-label="Sr No: activate to sort column descending"
+                          style="width: 18px;">Sr No</th>
+                        <th width="8%" class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-label="Star: activate to sort column ascending" style="width: 47px;">Star</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-label="Case Title: activate to sort column ascending" style="width: 80px;">Case Title
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-label="Case No: activate to sort column ascending" style="width: 66px;">Case No</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-label="Client: activate to sort column ascending" style="width: 104px;">Client</th>
+                        <th width="20%" class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-label="Action: activate to sort column ascending" style="width: 536px;">Action</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+
+
+                      <tr class="gc_row odd" role="row">
+                        <td class="sorting_1">1</td>
+
+                        <td class="small-col">
+
+                          <a at="90" class="Privat"><span style="display:none">1</span>
+                            <i class="fa fa-star-o"></i></a>
+                        </td>
+                        <td>Assult</td>
+                        <td>Z2223</td>
+                        <td>Kennedy Sendwa</td>
+
+                        <td width="53%">
+
+                          <a class="btn btn-default" style="margin-right: 3px;"><i class="fa fa-eye"></i> View</a>
+
+
+                          <a class="btn btn-info" style="margin-right: 3px;"><i class="fa fa-inr"></i> Fees</a>
+
+                          <a class="btn btn-success" style="margin-right: 3px;"><i class="fa fa-calendar"></i> Hearing
+                            Date</a>
+
+
+                          <a class="btn btn-primary" style="margin-right: 3px;"><i class="fa fa-edit"></i> Edit</a>
+                          <a class="btn btn-warning" style="margin-right: 3px;"><i class="fa fa-close"></i> Archived</a>
+                          <a class="btn bg-purple" style="margin-right: 3px;"><i class="fa fa-pencil"></i> Notes</a>
+                        </td>
+                      </tr>
+                      <tr class="gc_row even" role="row">
+                        <td class="sorting_1">2</td>
+
+                        <td class="small-col">
+
+                          <a at="90" class="Privat"><span style="display:none">2</span>
+                            <i class="fa fa-star-o"></i></a>
+                        </td>
+                        <td>testing case</td>
+                        <td>522654</td>
+                        <td>Kennedy Sendwa</td>
+
+                        <td width="53%">
+
+                          <a class="btn btn-default" style="margin-right: 3px;"><i class="fa fa-eye"></i> View</a>
+
+
+                          <a class="btn btn-info" style="margin-right: 3px;"><i class="fa fa-inr"></i> Fees</a>
+
+                          <a class="btn btn-success" style="margin-right: 3px;"><i class="fa fa-calendar"></i> Hearing
+                            Date</a>
+
+
+                          <a class="btn btn-primary" style="margin-right: 3px;"><i class="fa fa-edit"></i> Edit</a>
+                          <a class="btn btn-warning" style="margin-right: 3px;"><i class="fa fa-close"></i> Archived</a>
+                          <a class="btn bg-purple" style="margin-right: 3px;"><i class="fa fa-pencil"></i> Notes</a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+
+
+              <div class="row">
+                <div class="col-sm-5">
+                  <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 2 of 2
+                    entries</div>
+                </div>
+                <div class="col-sm-7">
+                  <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                    <ul class="pagination">
+                      <li class="paginate_button previous disabled" id="example1_previous"><a aria-controls="example1"
+                          data-dt-idx="0" tabindex="0">Previous</a></li>
+                      <li class="paginate_button active"><a aria-controls="example1" data-dt-idx="1" tabindex="0">1</a>
+                      </li>
+                      <li class="paginate_button next disabled" id="example1_next"><a aria-controls="example1"
+                          data-dt-idx="2" tabindex="0">Next</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div><!-- /.box-body -->
+        </div><!-- /.box -->
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,81 @@
+<div class="conainer">
+    <section class="content-header">
+        <h1>
+           Appointments        <small>Edit</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a [routerLink]="['/main/dasbhoard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+            <li><a [routerLink]="['/main/appointments']">Appointments</a></li>
+            <li class="active"><b>Edit</b></li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+        
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <!-- form start -->
+          
+            <form *ngFor="let item of addapointments;let i = index;">
+                                  <div class="box-body">
+                            <div class="form-group">
+                              <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="name" style="clear:both;"> Title</label>
+                      <input type="text" name="title" [(ngModel)]="addapointments[i].title" class="form-control" #title="ngModel" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+                            </div>
+                
+                 <div class="form-group">
+                              <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="name" style="clear:both;">Contact</label>
+                         <select name="name" [(ngModel)]="addapointments[i].contact" class="form-control" #name="ngModel" [ngModelOptions]="{standalone: true}" class="form-control chzn">
+                          <option value="">--Select Contact--</option>
+                          <option value={{addapointments[i].contact}}  selected="selected">{{addapointments[i].contact}}</option>										</select>
+                                    </div>
+                                </div>
+                            </div>
+                 <div class="form-group">
+                              <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="name" style="clear:both;">Motive</label>
+                      <textarea name="motive" [(ngModel)]="addapointments[i].motive" class="form-control" #motive="ngModel" [ngModelOptions]="{standalone: true}"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                
+                 <div class="form-group">
+                              <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="name" style="clear:both;">Date</label>
+                      <input type="date" name="date_time" [(ngModel)]="addapointments[i].date_time" class="form-control" #date_time="ngModel" [ngModelOptions]="{standalone: true}" class="form-control datetimepicker" >
+                                    </div>
+                                </div>
+                            </div>
+                
+                 <div class="form-group">
+                              <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="name" style="clear:both;">Notes</label>
+                      <textarea name="notes" [(ngModel)]="addapointments[i].notes" class="form-control" #notes="ngModel" [ngModelOptions]="{standalone: true}" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                
+                          
+                
+                        </div><!-- /.box-body -->
+        
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary" (click)="updateappointment(title, name, motive, date_time,notes, item.id)">Save</button>
+                        </div>
+                             </form></div><!-- /.box -->
+            </div>
+         </div>
+    </section>
+</div>

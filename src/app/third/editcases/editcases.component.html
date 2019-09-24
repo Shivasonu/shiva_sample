@@ -1,0 +1,197 @@
+<div class="container">
+    <section class="content-header">
+        <h1>
+            Case <small>Edit</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a [routerLink]="['/main/cases/allcases']">Case</a></li>
+            <li class="active">Edit</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form *ngFor="let item of addcases;let i = index;">
+                        <div class="box-body">
+                            <div class="box-body">
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Case Title</label>
+                                            <input type="text" name="case_title" [(ngModel)]="addcases[i].case_title"
+                                                class="form-control" #case_title="ngModel"
+                                                [ngModelOptions]="{standalone: true}">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Case No</label>
+                                            <input type="text" name="case_no" [(ngModel)]="addcases[i].case_no"
+                                                class="form-control" #case_no="ngModel"
+                                                [ngModelOptions]="{standalone: true}">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Client Name</label>
+                                            <select name="client_name" class="form-control chzn"
+                                                [(ngModel)]="addcases[i].client_name" class="form-control"
+                                                #client_name="ngModel" [ngModelOptions]="{standalone: true}">
+                                                <option value="">--Select Client--</option>
+                                                <option *ngFor="let item of addclients1;let i = index;"
+                                                    value="{{addclients1[i].id}}">
+                                                    {{addclients1[i].name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4" id="location_result">
+                                            <label>Location</label>
+                                            <select name="location"
+                                                [(ngModel)]="addcases[i].location" class="form-control"
+                                                #location="ngModel" [ngModelOptions]="{standalone: true}"
+                                                class="form-control chzn">
+                                                <option value="">--Select Location--</option>
+                                                <option *ngFor="let item of addlocation;let i = index;"
+                                                    value="{{addlocation[i].id}}">
+                                                    {{addlocation[i].location}}</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4" id="court_category_result">
+                                            <label>Court Category</label>
+                                            <select name="court_category"
+                                                [(ngModel)]="addcases[i].court_category" class="form-control"
+                                                #court_category="ngModel" [ngModelOptions]="{standalone: true}"
+                                                class="form-control chzn col-md-12">
+                                                <option value="">--Select Court Category Name--</option>
+                                                <option *ngFor="let item of addcourtcategory;let i = index;"
+                                                    value="{{addcourtcategory[i].id}}">
+                                                    {{addcourtcategory[i].name}}</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4" id="court_result">
+                                            <label>Court</label>
+                                            <select name="court" class="form-control chzn "
+                                                [(ngModel)]="addcases[i].court" class="form-control" #court="ngModel"
+                                                [ngModelOptions]="{standalone: true}">
+                                                <option value="">--Select Court --</option>
+                                                <option *ngFor="let item of addcourt;let i = index;"
+                                                    value="{{addcourt[i].id}}">
+                                                    {{addcourt[i].name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Case Category</label>
+                                            <ng-multiselect-dropdown [placeholder]="'Select an Category'"
+                                                [data]="dropdownList1" [settings]="dropdownSettings1"
+                                                name="case_category_id" [(ngModel)]="cases.case_category_id"
+                                                #case_category_id="ngModel" required>
+                                            </ng-multiselect-dropdown>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Case Stages</label>
+                                            <select name="case_stage" class="form-control chzn"
+                                                [(ngModel)]="addcases[i].case_stage" class="form-control"
+                                                #case_stage="ngModel" [ngModelOptions]="{standalone: true}">
+                                                <option value="">--Select Case Stage--</option>
+                                                <option *ngFor="let item of addcasestages;let i = index;"
+                                                    value="{{addcasestages[i].id}}">
+                                                    {{addcasestages[i].name}}</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Act</label>
+                                            <ng-multiselect-dropdown [placeholder]="'Select an act'"
+                                                name="selectedItems" [data]="dropdownList"
+                                                [(ngModel)]="cases.selectedItems" [settings]="dropdownSettings"
+                                                #selectedItems="ngModel" required>
+                                            </ng-multiselect-dropdown>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Description</label>
+                                            <textarea name="description" [(ngModel)]="addcases[i].description"
+                                                #description="ngModel" [ngModelOptions]="{standalone: true}"
+                                                class="form-control datepicker"></textarea>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Filling Date</label>
+                                            <input type="date" name="filling_date" [(ngModel)]="addcases[i].filling_date"
+                                                #filling_date="ngModel" [ngModelOptions]="{standalone: true}"
+                                                class="form-control datepicker">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Hearing Date</label>
+                                            <input type="date" name="hearing_date"
+                                                [(ngModel)]="addcases[i].hearing_date" #hearing_date="ngModel"
+                                                [ngModelOptions]="{standalone: true}" class="form-control datepicker">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Apposite Lawyer</label>
+                                            <input type="text" name="apposite_lawyer" [(ngModel)]="addcases[i].apposite_lawyer"
+                                                class="form-control" #apposite_lawyer="ngModel"
+                                                [ngModelOptions]="{standalone: true}">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Total Fees</label>
+                                            <input type="text" name="total_fees" [(ngModel)]="addcases[i].total_fees"
+                                                class="form-control" #total_fees="ngModel"
+                                                [ngModelOptions]="{standalone: true}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.box-body -->
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4 col-md-offset-4">
+                                        <div class="box-footer ">
+                                            <button type="submit" (click)="updatecases(case_title, case_no, client_name, location, court_category, court,  description, filling_date, hearing_date, apposite_lawyer, total_fees,selectedItems,case_category_id,case_stage, item.id)" class="btn btn-primary">Update</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form><!-- /.box -->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="modal fade successmechPopup" tabindex="-1" role="dialog">
+    <div class="modal-dialog  modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Case Update</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <i class="fa fa-check fa-2"></i>&nbsp;
+                    <span>Case Updated sucessfully</span>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" (click)="redirect()" class="btn btn-danger" data-dismiss="modal">close</button>
+            </div>
+        </div>
+    </div>
+</div>

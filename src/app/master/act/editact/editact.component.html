@@ -1,0 +1,68 @@
+<div class="content-wrapper" style="min-height: 369px;">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Act <small>Edit</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+      <li><a [routerLink]="['/main/master/act']">Act</a></li>
+      <li class="active"><b>Edit</b></li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+          <!-- /.box-header -->
+          <!-- form start -->
+          <form *ngFor="let item of addacts;let i = index;">
+            <div class="box-body">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label for="name" style="clear:both;"> Name</label>
+                    <input type="text" name="name" [(ngModel)]="addacts[i].name" class="form-control" #name="ngModel"
+                      [ngModelOptions]="{standalone: true}">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="name" style="clear:both;">Description</label>
+                    <textarea name="description" [(ngModel)]="addacts[i].description" class="form-control"
+                      #description="ngModel" [ngModelOptions]="{standalone: true}" class="form-control"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /.box-body -->
+            <div class="box-footer">
+              <button type="submit" (click)="updateact(name,description,item.id)" class="btn btn-primary">Save</button>
+            </div>
+          </form>
+        </div><!-- /.box -->
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="modal fade successmechPopup" tabindex="-1" role="dialog">
+  <div class="modal-dialog  modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Act Update</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          <i class="fa fa-check fa-2"></i>&nbsp;
+          <span>Act Updated sucessfully</span>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="redirect()" class="btn btn-danger" data-dismiss="modal">close</button>
+      </div>
+    </div>
+  </div>
+</div>

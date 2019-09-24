@@ -1,0 +1,101 @@
+<div class="container">
+    <section class="content-header">
+        <h1>
+            Leave Policy <small>Add</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a [routerLink]="['/main/hrmange/leavetype']">Leave Policy</a></li>
+            <li class="active"><b>Add</b></li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form (submit)="addleave(user)" #f="ngForm">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="name" style="clear:both;"> Leave Type <span>*</span></label>
+                                        <input type="text" name="leavetype" [(ngModel)]="user.leavetype"
+                                            #leavetype="ngModel" class="form-control" required pattern="[a-zA-Z ]*">
+                                        <span class="err-msg">
+                                            <div *ngIf="leavetype.touched">
+                                                <div *ngIf="leavetype.errors && leavetype.errors.required">
+                                                    Leave Type is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                        <span class="err-msg">
+                                            <div *ngIf="leavetype.touched">
+                                                <div *ngIf="leavetype.errors && leavetype.errors.pattern">
+                                                    Please enter olny Alphabits
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="name" style="clear:both;"> Leaves <span>*</span></label>
+                                        <input type="number" min="0" name="leaves" [(ngModel)]="user.leaves"
+                                            #leaves="ngModel" class="form-control" required>
+                                        <span class="err-msg">
+                                            <div *ngIf="leaves.touched">
+                                                <div *ngIf="leaves.errors && leaves.errors.required">
+                                                    Leave is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="name" style="clear:both;">Description <span>*</span></label>
+                                        <textarea name="description" class="form-control" [(ngModel)]="user.description"
+                                            #description="ngModel" rows="1" required></textarea>
+                                        <span class="err-msg">
+                                            <div *ngIf="description.touched">
+                                                <div *ngIf="description.errors && description.errors.required">
+                                                    Description is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Save</button>
+                        </div>
+                    </form>
+                </div><!-- /.box -->
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<div class="modal fade successmechPopup" tabindex="-1" role="dialog">
+    <div class="modal-dialog  modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Leaves Add</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <i class="fa fa-check fa-2"></i>&nbsp;
+                    <span>Leaves added sucessfully</span>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" (click)="redirect()" class="btn btn-danger" data-dismiss="modal">close</button>
+            </div>
+        </div>
+    </div>
+  </div>

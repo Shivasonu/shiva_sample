@@ -1,0 +1,180 @@
+<mat-toolbar color="blue">
+  <mat-toolbar-row>
+
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="primary">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    <span>Advocate</span>
+    <ul style="margin: 0 0 0 auto;" class="navbar-nav">
+      <li class="nav-item dropdown">
+
+        <div class="dropdown">
+          <button class="dropbtn"><a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img src="http://localhost/advocate_api/uploads/user1.png"
+                width="40" height="40" class="rounded-circle">
+              {{userName}} <i class="fa fa-caret-down"></i></a>
+          </button>
+          <div class="dropdown-content" *ngIf="roleid != '3'">
+            <a routerLink='dashboard'>Dashboard</a>
+            <a routerLink='profile'>Edit Profile</a>
+            <a [routerLink]="['']" (click)="logout()">Log Out</a>
+          </div>
+          <div class="dropdown-content" *ngIf="roleid === '3'">
+              <a routerLink='cdashboard'>Dashboard</a>
+              <a routerLink='profile'>Edit Profile</a>
+              <a [routerLink]="['']" (click)="logout()">Log Out</a>
+            </div>
+        </div>
+      </li>
+    </ul>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container class="example-container">
+
+  <mat-sidenav #drawer mode="side" opened role="navigation" >
+    <mat-nav-list *ngIf="roleid != '3'">
+      <a mat-list-item routerLink='dashboard'><i class="fa fa-dashboard"></i>&nbsp;&nbsp;Dashboard</a>
+      <mat-list-item (click)="showSubmenu = !showSubmenu">
+        <i class="fa fa-users"></i>&nbsp;Management
+        <button mat-button mat-icon-button>
+          <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}">expand_more</mat-icon>
+        </button>
+      </mat-list-item>
+      <div class="submenu" [ngClass]="{'expanded' : showSubmenu}">
+        <a mat-list-item routerLink='hrmange/clients' (click)="showSubmenu = !showSubmenu"><i
+            class="fa fa-circle-o"></i>
+          <mat-list-item>Applicants</mat-list-item>
+        </a>
+        <a mat-list-item routerLink='hrmange/employees' (click)="showSubmenu = !showSubmenu"><i
+            class="fa fa-circle-o"></i>
+          <mat-list-item>Staff</mat-list-item>
+        </a>
+        <a mat-list-item routerLink='hrmange/user-role' (click)="showSubmenu = !showSubmenu"><i
+            class="fa fa-circle-o"></i>
+          <mat-list-item>User Roles</mat-list-item>
+        </a>
+        <a mat-list-item routerLink='hrmange/departments' (click)="showSubmenu = !showSubmenu"><i
+            class="fa fa-circle-o"></i>
+          <mat-list-item>Departments</mat-list-item>
+        </a>
+        <a mat-list-item routerLink='hrmange/permissions' (click)="showSubmenu = !showSubmenu"><i
+            class="fa fa-circle-o"></i>
+          <mat-list-item>Permissions</mat-list-item>
+        </a>
+        <a mat-list-item routerLink='hrmange/holidays' (click)="showSubmenu = !showSubmenu"><i class="fa fa-circle-o"></i>
+          <mat-list-item>Holidays list</mat-list-item>
+        </a>
+        <a mat-list-item routerLink='hrmange/notice' (click)="showSubmenu = !showSubmenu"><i class="fa fa-circle-o"></i>
+          <mat-list-item>Notice Board</mat-list-item>
+        </a>
+        <a mat-list-item routerLink='hrmange/leavetype' (click)="showSubmenu = !showSubmenu"><i
+            class="fa fa-circle-o"></i>
+          <mat-list-item>Leave Policy </mat-list-item>
+        </a>
+        <a mat-list-item routerLink="hrmange/attendance" (click)="showSubmenu = !showSubmenu"><i
+            class="fa fa-circle-o"></i>
+          <mat-list-item>Attendance</mat-list-item>
+        </a>
+        <a mat-list-item routerLink="hrmange/leavenotification" (click)="showSubmenu = !showSubmenu"><i
+            class="fa fa-circle-o"></i>
+          <mat-list-item>Leave Notification</mat-list-item>
+        </a>
+      </div>
+      <mat-list-item (click)="showSubmenucases = !showSubmenucases">
+        <i class="fa fa-th"></i>&nbsp;Cases
+        <button mat-button mat-icon-button>
+          <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenucases}">expand_more</mat-icon>
+        </button>
+      </mat-list-item>
+      <div class="submenu" [ngClass]="{'expanded' : showSubmenucases}">
+        <a mat-list-item routerLink='cases/allcases' (click)="showSubmenucases = !showSubmenucases"><i
+            class="fa fa-circle-o"></i>
+          <mat-list-item>All cases</mat-list-item>
+        </a>
+        <a mat-list-item routerLink='cases/starredcases' (click)="showSubmenucases = !showSubmenucases"><i
+            class="fa fa-circle-o"></i>
+          <mat-list-item>Important cases</mat-list-item>
+        </a>
+        <a mat-list-item routerLink='cases/carchivedcases' (click)="showSubmenucases = !showSubmenucases"><i
+            class="fa fa-circle-o"></i>
+          <mat-list-item>Archived cases</mat-list-item>
+        </a>
+        <a mat-list-item routerLink='cases/documents' (click)="showSubmenucases = !showSubmenucases"><i class="fa fa-circle-o"></i>
+          <mat-list-item>Documents</mat-list-item>
+        </a>
+      </div>
+      <a mat-list-item routerLink='casestudy'><i class="fa fa-book"></i>&nbsp;&nbsp;Case Study</a>
+      <mat-list-item (click)="showSubmenutasks = !showSubmenutasks">
+        <i class="fa fa-tasks"></i>&nbsp;Tasks
+        <button mat-button mat-icon-button>
+          <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenutasks}">expand_more</mat-icon>
+        </button>
+      </mat-list-item>
+      <div class="submenu" [ngClass]="{'expanded' : showSubmenutasks}">
+        <a mat-list-item routerLink='tasks/alltasks' (click)="showSubmenutasks = !showSubmenutasks"><i
+            class="fa fa-circle-o"></i>&nbsp;&nbsp;All Tasks</a>
+        <a mat-list-item routerLink='tasks/mytasks' (click)="showSubmenutasks = !showSubmenutasks"><i
+            class="fa fa-circle-o"></i>&nbsp;&nbsp;Assigned  Tasks</a>
+      </div>
+
+      <a mat-list-item routerLink='reports'><i class="fa fa-bar-chart-o"></i>&nbsp;&nbsp;Reports</a>
+      <a mat-list-item routerLink='message'><i class="fa fa-envelope"></i>&nbsp;&nbsp;Inbox</a>
+      <a mat-list-item routerLink='todolist'><i class="fa fa-bars"></i>&nbsp;&nbsp;To do list</a>
+      <a mat-list-item routerLink='contacts'><i class="fa fa-newspaper-o"></i>&nbsp;&nbsp;Contacts</a>
+      <a mat-list-item routerLink='appointments'><i class="fa fa-thumb-tack"></i>&nbsp;&nbsp;Appointments</a>
+
+      <mat-list-item (click)="showSubmenumaster = !showSubmenumaster">
+        <i class="fa fa-folder"></i>&nbsp;Master Data
+        <button mat-button mat-icon-button>
+          <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenumaster}">expand_more</mat-icon>
+        </button>
+      </mat-list-item>
+      <div class="submenu" [ngClass]="{'expanded' : showSubmenumaster}">
+        <a mat-list-item routerLink='master/location' (click)="showSubmenumaster = !showSubmenumaster"><i
+            class="fa fa-circle-o"></i>
+          <mat-list-item>Location</mat-list-item>
+        </a>
+        <a mat-list-item routerLink='master/tax' (click)="showSubmenumaster = !showSubmenumaster"><i
+            class="fa fa-circle-o"></i>
+          <mat-list-item>Tax</mat-list-item>
+        </a>
+        <a mat-list-item routerLink='master/case' (click)="showSubmenumaster = !showSubmenumaster"><i
+            class="fa fa-circle-o"></i>
+          <mat-list-item>Case Category</mat-list-item>
+        </a>
+        <a mat-list-item routerLink='master/court-category' (click)="showSubmenumaster = !showSubmenumaster"><i
+            class="fa fa-circle-o"></i>
+          <mat-list-item>Court Category</mat-list-item>
+        </a>
+        <a mat-list-item routerLink='master/act' (click)="showSubmenumaster = !showSubmenumaster"><i
+            class="fa fa-circle-o"></i>
+          <mat-list-item>ACT</mat-list-item>
+        </a>
+        <a mat-list-item routerLink='master/court' (click)="showSubmenumaster = !showSubmenumaster"><i
+            class="fa fa-circle-o"></i>
+          <mat-list-item>Court</mat-list-item>
+        </a>
+        <a mat-list-item routerLink='master/case-stages' (click)="showSubmenumaster = !showSubmenumaster"><i
+            class="fa fa-circle-o"></i>
+          <mat-list-item>Case Stages</mat-list-item>
+        </a>
+        <a mat-list-item routerLink='master/payment-mode' (click)="showSubmenumaster = !showSubmenumaster"><i
+            class="fa fa-circle-o"></i>
+          <mat-list-item>Payment Modes</mat-list-item>
+        </a>
+      </div>
+      <a mat-list-item href="" [routerLink]="['']" (click)="logout()"> <i class="fa fa-sign-out m-r-xs"></i>Log out</a>
+    </mat-nav-list>
+
+    <mat-nav-list *ngIf="roleid === '3'" style="width:225px!important;">
+        <a mat-list-item routerLink='cdashboard'><i class="fa fa-dashboard"></i>&nbsp;&nbsp;Dashboard</a>
+        <a mat-list-item routerLink='cmycases'><i class="fa fa-bar-chart-o"></i>&nbsp;&nbsp;MyCases</a>
+        <a mat-list-item routerLink='cmessages'><i class="fa fa-envelope"></i>&nbsp;&nbsp;Messages</a>
+        <a mat-list-item href="" [routerLink]="['']" (click)="logout()"> <i class="fa fa-sign-out m-r-xs"></i>Log out</a>
+      </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content style="margin-left: 206px!important;">
+      <router-outlet></router-outlet>    
+  </mat-sidenav-content>
+</mat-sidenav-container>

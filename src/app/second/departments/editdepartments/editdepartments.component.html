@@ -1,0 +1,89 @@
+<div class="container">
+    <section class="content-header">
+        <h1>
+            Departments <small>Edit</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+            <li><a [routerLink]="['/main/hrmange/departments']">Departments</a></li>
+            <li class="active"><b>Edit</b></li>
+        </ol>
+        <section class="content">
+            <div class="col-md-12">
+                <!-- left column -->
+                <div class="row">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <h3 style="color:#FF0000"></h3>
+                        <form *ngFor="let item of adddepartments;let i = index;">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="name" style="clear:both;">Department Name</label>
+                                            <input type="text" name="name" [(ngModel)]="adddepartments[i].dept_name" #dept_name="ngModel" [ngModelOptions]="{standalone: true}" class="form-control">
+                                            
+                                        </div>
+                                        <div class="col-md-4">
+                                                <label for="name" style="clear:both;">Description</label>
+                                                <textarea type="text" name="description" [(ngModel)]="adddepartments[i].dept_description" #dept_description="ngModel" [ngModelOptions]="{standalone: true}" class="form-control"></textarea>
+                                                
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="form-group input_fields_wrap">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="name" style="clear:both;"> Designations</label>
+                                            <input type="text" name="designations" [(ngModel)]="adddepartments[i].designation" #designation="ngModel" [ngModelOptions]="{standalone: true}" class="form-control">
+                                            <!-- <span class="err-msg">
+                                                <div *ngIf="designations.touched">
+                                                    <div *ngIf="designations.errors && designations.errors.required">
+                                                        Mobile no is required
+                                                    </div>
+                                                </div>
+                                            </span> -->
+                                            <p *ngFor="let desg of designationsList; let i = index;"> {{desg}}
+                                                <span>
+                                                    <button (click)="sliceDept(i)">&times;</button>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.box-body -->
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-primary"
+                                (click)="updatedepartment(dept_name, dept_description,designation, item.id)">Save</button>
+                            </div>
+                        </form>
+                    </div><!-- /.box -->
+                </div>
+            </div>
+        </section>
+    </section>
+</div>
+
+<div class="modal fade successmechPopup" tabindex="-1" role="dialog">
+        <div class="modal-dialog  modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Department Update</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <i class="fa fa-check fa-2"></i>&nbsp;
+                        <span>Department Updated sucessfully</span>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" (click)="redirect()" class="btn btn-danger" data-dismiss="modal">close</button>
+                </div>
+            </div>
+        </div>
+      </div>

@@ -1,0 +1,104 @@
+<div class="container">
+  <div class="content-wrapper" style="min-height: 369px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Court <small>Edit</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+        <li><a [routerLink]="['/main/master/court']"> Court</a></li>
+        <li class="active"><b>Edit</b></li>
+      </ol>
+    </section>
+
+    <section class="content">
+      <div class="row">
+
+
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <!-- /.box-header -->
+            <!-- form start -->
+
+            <form *ngFor="let item of addcourts;let i = index;">
+              <div class="box-body">
+                <div class="box-body">
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <label for="name" style="clear:both;"> Name</label>
+                        <input type="text" name="name"  [(ngModel)]="addcourts[i].name"
+                         #name="ngModel" [ngModelOptions]="{standalone: true}" class="form-control">
+                      </div>{{addcourts[i].court_category_id}}
+                      <div class="col-md-4">
+                          <label for="location_id" style="clear:both;">Location </label>
+                          <select name="location" [(ngModel)]="addcourts[i].location" #location="ngModel"
+                            class="form-control chzn">
+                            <option value="">--Select Location--</option>
+                            <option *ngFor="let item of locations;let i = index;" value="{{item.id}}">
+                              {{item.location}}</option>
+                          </select>
+                      </div>
+                      <div class="col-md-4">
+                        <label for="court_category" style="clear:both;">Court Category </label>
+                        <select name="court_category" [(ngModel)]="addcourts[i].court_category" #court_category="ngModel"
+                          class="form-control chzn" required>
+                          <option value="">--Select Court Category --</option>
+                          <option *ngFor="let item of court_categorys;let i = index;" value="{{item.id}}">
+                            {{item.name}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <label for="name" style="clear:both;">Description</label>
+                        <textarea name="description" rows = "3" style="height: unset;" class="form-control" [(ngModel)]="addcourts[i].description"
+                        #description="ngModel" [ngModelOptions]="{standalone: true}"></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+                </div><!-- /.box-body -->
+
+                <div class="box-footer">
+                  <button type="submit" (click)="updatecourt(name, location, court_category, description, id)" class="btn btn-primary">Save</button>
+                </div>
+              </div><!-- /.box -->
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="modal fade successmechPopup" tabindex="-1" role="dialog">
+  <div class="modal-dialog  modal-sm" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Court Update</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <p>
+                  <i class="fa fa-check fa-2"></i>&nbsp;
+                  <span>Court Updated sucessfully</span>
+              </p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" (click)="redirect()" class="btn btn-danger" data-dismiss="modal">close</button>
+          </div>
+      </div>
+  </div>
+</div>

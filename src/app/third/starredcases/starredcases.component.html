@@ -1,0 +1,114 @@
+<div class="container">
+  <section class="content-header">
+    <h1>
+    Important Cases<small></small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li ><a [routerLink]="['/main/cases/allcases']">Cases</a></li>
+      <li class="active">Important Cases</li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          
+          <div class="box-body table-responsive" id="result">
+            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+              <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                       
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="example1_filter" class="dataTables_filter">
+                            <label>Search:<input type="search" class="form-control input-sm" placeholder=""
+                                    aria-controls="example1" [(ngModel)]="searchText"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              <div class="col-sm-12">
+                <div class="row">
+                    <table id="example1" class="table table-bordered table-striped table-mailbox dataTable no-footer"
+                    role="grid" aria-describedby="example1_info">
+                    <thead>
+                      <tr role="row">
+                        <th width="5%" class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-sort="ascending" aria-label="Sr No: activate to sort column descending"
+                          style="width: 18px;">Sr No</th>
+                        <th width="8%" class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-label="Star: activate to sort column ascending" style="width: 47px;">Star</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-label="Case Title: activate to sort column ascending" style="width: 80px;">Case Title
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-label="Case No: activate to sort column ascending" style="width: 66px;">Case No</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-label="Client: activate to sort column ascending" style="width: 104px;">Client</th>
+                        <th width="20%" class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                          aria-label="Action: activate to sort column ascending" style="width: 536px;">Action</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+
+
+                      <tr class="gc_row odd" role="row" *ngFor="let i = index;let item of addcases | filter:searchText | paginate: { itemsPerPage: 10, currentPage: p }">
+                        <td class="sorting_1">{{ (p - 1) * 10 + i +1 }}</td>
+                        <td class="small-col">
+
+                          <a (click)="starupdate(item.id)" at="90" class="Privat"><span style="display:none">1</span>
+                           <div *ngIf="item.starred_cases == 0"><i class="fa fa-star-o"></i></div>
+                           <div *ngIf="item.starred_cases == 1"><i class="fa fa-star"></i></div>
+                          </a>
+                        </td>
+                        <td>{{item.case_title}}</td>
+                        <td>{{item.case_no}}</td>
+                        <td>{{item.client_name}}</td>
+                        
+
+                        <td width="53%">
+
+                          <a class="btn btn-default" style="margin-right: 3px;"
+                            [routerLink]="['/main/cases/viewcase',item.id]"><i class="fa fa-eye"></i> View</a>
+
+
+                          <a class="btn btn-info" style="margin-right: 3px;"><i class="fa fa-inr"></i> Fees</a>
+
+                          <a [routerLink]="['/main/cases/hearingdates',item.id]" class="btn btn-success"
+                            style="margin-right: 3px;"><i class="fa fa-calendar"></i> Hearing Date</a>
+
+
+                          <a [routerLink]="['/main/cases/editcases',item.id]" class="btn btn-primary"
+                            style="margin-right: 3px;"><i class="fa fa-edit"></i> Edit</a>
+                          <a [routerLink]="['/main/cases/archivedcases',item.id]" class="btn btn-warning"
+                            style="margin-right: 3px;"><i class="fa fa-close"></i> Archived</a>
+                          <!-- <a class="btn bg-purple" style="margin-right: 3px;"><i class="fa fa-pencil"></i> Notes</a> -->
+                        </td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-sm-5">
+
+                  </div>
+                  <div class="col-sm-7" style="text-align: right;">
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div><!-- /.box-body -->
+        </div><!-- /.box -->
+      </div>
+    </div>
+  </section>
+</div>

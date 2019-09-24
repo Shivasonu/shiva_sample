@@ -1,0 +1,85 @@
+<div class="container">
+    <section class="content-header">
+        <h1>
+            Appointments        <small>View</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+            <li><a [routerLink]="['/main/appointments']">Appointments</a></li>
+            <li class="active"><b>View</b></li>
+        </ol>
+    </section>
+
+    <section class="content">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">View Case Briefing</h3>
+                    </div><!-- /.box-header -->
+                    <!-- form start -->
+                 <div class="box-body" *ngFor="let item of addappointments;let i = index;">
+                            <div class="form-group">
+                              <div class="row">
+                                    <div class="col-md-2">
+                                        <label for="name" style="clear:both;"> Title</label>
+                    </div>	
+                    <div class="col-md-4">	
+                            {{item.title}}                                </div>
+                                </div>
+                            </div>
+                
+                 <div class="form-group">
+                              <div class="row">
+                                    <div class="col-md-2">
+                                        <label for="name" style="clear:both;">Contact</label>
+                    </div>	
+                    <div class="col-md-4">	
+                            {{item.contact}}				            </div>
+                                </div>
+                            </div>
+                 <div class="form-group">
+                              <div class="row">
+                                    <div class="col-md-2">
+                                        <label for="name" style="clear:both;">Motive</label>
+                    </div>	
+                    <div class="col-md-4">	
+                            {{item.motive}}                    </div>
+                                </div>
+                            </div>
+                
+                 <div class="form-group">
+                              <div class="row">
+                                    <div class="col-md-2">
+                                        <label for="name" style="clear:both;">Date</label>
+                    </div>	
+                    <div class="col-md-4">	
+                            {{item.date_time}}                              </div>
+                                </div>
+                            </div>
+                
+                 <div class="form-group">
+                              <div class="row">
+                                    <div class="col-md-2">
+                                        <label for="name" style="clear:both;">Notes</label>
+                    </div>	
+                    <div class="col-md-4">	
+                            {{item.notes}}                                </div>
+                                </div>
+                            </div>
+                                  
+    
+                
+                   
+                          
+                
+                        </div><!-- /.box-body -->
+        
+                      
+                             </div><!-- /.box -->
+            </div>
+         </div>
+    </section>
+</div>

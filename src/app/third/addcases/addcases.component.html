@@ -1,0 +1,277 @@
+<div class="container">
+  <section class="content-header">
+    <h1>
+      Case <small>Add</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+      <li><a [routerLink]="['/main/cases/allcases']">Case</a></li>
+      <li class="active">Add</li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">Add</h3>
+          </div><!-- /.box-header -->
+          <!-- form start -->
+          <form (submit)="addtodolist(cases)" name="addCasesForm" #f="ngForm">
+            <div class="box-body">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Case Title</label>
+                    <input type="text" name="title" id="title" [(ngModel)]="cases.title" #title="ngModel"
+                      class="form-control"
+                      onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode > 31 && event.charCode < 33) || (event.charCode > 47 && event.charCode < 58)"
+                      required>
+                    <span class="err-msg">
+                      <div *ngIf="title.touched">
+                        <div *ngIf="title.errors && title.errors.required">
+                          Title is required
+                        </div>
+                      </div>
+                    </span>
+                  </div>
+                  <div class="col-md-4">
+                    <label>Case No</label>
+                    <input type="text" name="case_no" [(ngModel)]="cases.case_no" #case_no="ngModel"
+                      class="form-control" required>
+                    <span class="err-msg">
+                      <div *ngIf="case_no.touched">
+                        <div *ngIf="case_no.errors && case_no.errors.required">
+                          Case No is required
+                        </div>
+                      </div>
+                    </span>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="input-group">
+                      <label>Client Name</label>
+                      <select name="client_id" [(ngModel)]="cases.client_id" #client_id="ngModel"
+                        class="form-control chzn" required>
+                        <option value="">--Select Client--</option>
+                        <option *ngFor="let item of addcases;let i = index;" value="{{addcases[i].id}}">
+                          {{addcases[i].name}}</option>
+                      </select>
+                    </div>
+                    <span class="err-msg">
+                      <div *ngIf="client_id.touched">
+                        <div *ngIf="client_id.errors && client_id.errors.required">
+                          Client Name is required
+                        </div>
+                      </div>
+                    </span>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-4" id="location_result">
+                    <label>Location</label>
+                    <select name="location_id" [(ngModel)]="cases.location_id" #location_id="ngModel" id="location_id"
+                      class="form-control chzn" required>
+                      <option value="">--Select Location--</option>
+                      <option *ngFor="let item of addlocation;let i = index;" value="{{addlocation[i].id}}">
+                        {{addlocation[i].location}}</option>
+                    </select>
+                    <span class="err-msg">
+                      <div *ngIf="location_id.touched">
+                        <div *ngIf="location_id.errors && location_id.errors.required">
+                          Location is required
+                        </div>
+                      </div>
+                    </span>
+                  </div>
+                  <div class="col-md-4" id="court_category_result">
+                    <label>Court Category</label>
+                    <select name="court_category_id" id="court_category_id" [(ngModel)]="cases.court_category_id"
+                      #court_category_id="ngModel" class="form-control chzn" required>
+                      <option value="">--Select Court Category Name--</option>
+                      <option *ngFor="let item of addcourtcategory;let i = index;" value="{{addcourtcategory[i].id}}">
+                        {{addcourtcategory[i].name}}</option>
+                    </select>
+                    <span class="err-msg">
+                      <div *ngIf="court_category_id.touched">
+                        <div *ngIf="court_category_id.errors && court_category_id.errors.required">
+                          Court Category is required
+                        </div>
+                      </div>
+                    </span>
+                  </div>
+                  <div class="col-md-4" id="court_result">
+                    <label>Court</label>
+                    <select name="court_id" id="court_id" [(ngModel)]="cases.court_id" #court_id="ngModel"
+                      class="form-control chzn" required>
+                      <option value="">--Select Court --</option>
+                      <option *ngFor="let item of addcourt;let i = index;" value="{{addcourt[i].id}}">
+                        {{addcourt[i].name}}</option>
+                    </select>
+                    <span class="err-msg">
+                      <div *ngIf="court_id.touched">
+                        <div *ngIf="court_id.errors && court_id.errors.required">
+                          Court Name is required
+                        </div>
+                      </div>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Case Category</label>
+                    <ng-multiselect-dropdown [placeholder]="'Select an Category'" [data]="dropdownList1"
+                      [settings]="dropdownSettings1" name="case_category_id" [(ngModel)]="cases.case_category_id"
+                      #case_category_id="ngModel" required>
+                    </ng-multiselect-dropdown>
+                    <span class="err-msg">
+                      <div *ngIf="case_category_id.touched">
+                        <div *ngIf="case_category_id.errors && case_category_id.errors.required">
+                          Case Category is required
+                        </div>
+                      </div>
+                    </span>
+                  </div>
+                  <div class="col-md-4">
+                    <label>Case Stage</label>
+                    <select name="case_stage_id" [(ngModel)]="cases.case_stage_id" #case_stage_id="ngModel"
+                      class="form-control chzn" required>
+                      <option value="">--Select Case Stage--</option>
+                      <option *ngFor="let item of addcasestages;let i = index;" value="{{addcasestages[i].id}}">
+                        {{addcasestages[i].name}}</option>
+                    </select>
+                    <span class="err-msg">
+                      <div *ngIf="case_stage_id.touched">
+                        <div *ngIf="case_stage_id.errors && case_stage_id.errors.required">
+                          Case Stage is required
+                        </div>
+                      </div>
+                    </span>
+                  </div>
+                  <div class="col-md-4">
+                    <label>Act</label>
+                    <ng-multiselect-dropdown [placeholder]="'Select an act'" name="selectedItems" [data]="dropdownList"
+                      [(ngModel)]="cases.selectedItems" [settings]="dropdownSettings" #selectedItems="ngModel" required>
+                    </ng-multiselect-dropdown>
+                    <span class="err-msg">
+                      <div *ngIf="selectedItems.touched">
+                        <div *ngIf="selectedItems.errors && selectedItems.errors.required">
+                          Act is required
+                        </div>
+                      </div>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Description</label>
+                    <textarea name="description" [(ngModel)]="cases.description" #description="ngModel"
+                      class="form-control" required></textarea>
+                    <span class="err-msg">
+                      <div *ngIf="description.touched">
+                        <div *ngIf="description.errors && description.errors.required">
+                          Description is required
+                        </div>
+                      </div>
+                    </span>
+                  </div>
+                  <div class="col-md-4">
+                    <label>Filling Date</label>
+                    <input type="date" name="start_date" [(ngModel)]="cases.start_date" #start_date="ngModel"
+                      class="form-control datepicker" required>
+                    <span class="err-msg">
+                      <div *ngIf="start_date.touched">
+                        <div *ngIf="start_date.errors && start_date.errors.required">
+                          Start Date is required
+                        </div>
+                      </div>
+                    </span>
+                  </div>
+                  <div class="col-md-4">
+                    <label>Hearing Date</label>
+                    <input type="date" name="hearing_date" [(ngModel)]="cases.hearing_date" #hearing_date="ngModel"
+                      class="form-control datepicker" required>
+                    <span class="err-msg">
+                      <div *ngIf="hearing_date.touched">
+                        <div *ngIf="hearing_date.errors && hearing_date.errors.required">
+                          Hearing Date is required
+                        </div>
+                      </div>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Apposite Lawyer</label>
+                    <input type="text" name="o_lawyer" [(ngModel)]="cases.o_lawyer" #o_lawyer="ngModel" value=""
+                      class="form-control" required>
+                    <span class="err-msg">
+                      <div *ngIf="o_lawyer.touched">
+                        <div *ngIf="o_lawyer.errors && o_lawyer.errors.required">
+                          Apposite Lawyer is required
+                        </div>
+                      </div>
+                    </span>
+                  </div>
+                  <div class="col-md-4">
+                    <label>Total Fees</label>
+                    <input type="text" name="fees" [(ngModel)]="cases.fees" #fees="ngModel" value=""
+                      class="form-control" required>
+                    <span class="err-msg">
+                      <div *ngIf="fees.touched">
+                        <div *ngIf="fees.errors && fees.errors.required">
+                          Fees is required
+                        </div>
+                      </div>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- /.box-body -->
+            <div class="box-footer row">
+              <div class="col-sm-5 offset-sm-5">
+                <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Save</button>
+              </div>
+            </div>
+          </form>
+        </div><!-- /.box -->
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="modal fade successmechPopup" tabindex="-1" role="dialog">
+  <div class="modal-dialog  modal-sm" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Case Add</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <p>
+                  <i class="fa fa-check fa-2"></i>&nbsp;
+                  <span>Case has been added sucessfully</span>
+              </p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" (click)="redirect()" class="btn btn-danger" data-dismiss="modal">close</button>
+          </div>
+      </div>
+  </div>
+</div>

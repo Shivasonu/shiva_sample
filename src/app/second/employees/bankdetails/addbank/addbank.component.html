@@ -1,0 +1,162 @@
+<div class="content-wrapper" style="min-height: 242px;">
+
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Bank Details <small>Add</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a [routerLink]="['/main/dashboard']" ><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+      <li><a [routerLink]="['/main/hrmange/employees']" >Staff</a></li>
+      <li><a [routerLink]="['/main/hrmange/employees/bankdetails', subscribedParam]" > Bank Details</a></li>
+      <li class="active"><b>Add Bank Details</b></li>
+    </ol>
+  </section>
+
+  <section class="content">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+          <!-- /.box-header -->
+          <!-- form start -->
+          <form (submit)="addbank(user)" #f="ngForm" name="myForm" >
+            <div class="box-body">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label for="name" style="clear:both;">Account Holder Name</label>
+                    <input type="text" name="userid" value= ""  [(ngModel)]="user.userid" #userid="ngModel" style="display:none">
+                    <input type="text" name="accountholdername"  value="" [(ngModel)]="user.accountholdername" #accountholdername="ngModel" class="form-control" 
+                    onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode > 31 && event.charCode < 33) || (event.charCode > 47 && event.charCode < 58)"
+                    required pattern="[a-zA-Z ]*" >
+                    <span class="err-msg">
+                      <div *ngIf="accountholdername.touched">
+                          <div *ngIf="accountholdername.errors && accountholdername.errors.required">
+                            Account Holder Name is required
+                          </div>
+                      </div>
+                  </span>
+                  <span class="err-msg">
+                    <div *ngIf="accountholdername.touched">
+                        <div *ngIf="accountholdername.errors && accountholdername.errors.pattern">
+                            please enter olny Alphabits
+                        </div>
+                    </div>
+                </span>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="name" style="clear:both;">Account Number</label>
+                    <input type="text" name="account_number" value="" [(ngModel)]="user.account_number" #account_number="ngModel" class="form-control" pattern="[0-9]*" required>
+                    <span class="err-msg">
+                      <div *ngIf="account_number.touched">
+                          <div *ngIf="account_number.errors && account_number.errors.required">
+                            Account Number is required
+                          </div>
+                      </div>
+                  </span>
+                    <span class="err-msg">
+                      <div *ngIf="account_number.touched">
+                          <div *ngIf="account_number.errors && account_number.errors.pattern">
+                              Enter only Numbers
+                          </div>
+                      </div>
+                  </span>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="name" style="clear:both;">Bank Name</label>
+                    <input type="text" name="bank_name" value="" [(ngModel)]="user.bank_name" #bank_name="ngModel"  class="form-control" required pattern="[a-zA-Z ]*">
+                    <span class="err-msg">
+                      <div *ngIf="bank_name.touched">
+                          <div *ngIf="bank_name.errors && bank_name.errors.required">
+                            Bank Name is required
+                          </div>
+                      </div>
+                  </span>
+                  <span class="err-msg">
+                    <div *ngIf="bank_name.touched">
+                        <div *ngIf="bank_name.errors && bank_name.errors.pattern">
+                            please enter olny Alphabits
+                        </div>
+                    </div>
+                </span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label for="name" style="clear:both;">IFSC Code</label>
+                    <input type="text" name="ifsc_code" value="" [(ngModel)]="user.ifsc_code" #ifsc_code="ngModel" class="form-control" required>
+                    <span class="err-msg">
+                      <div *ngIf="ifsc_code.touched">
+                          <div *ngIf="ifsc_code.errors && ifsc_code.errors.required">
+                            Ifsc Code is required
+                          </div>
+                      </div>
+                  </span>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="name" style="clear:both;">PAN Number</label>
+                    <input type="text" name="pan_number" value="" [(ngModel)]="user.pan_number" #pan_number="ngModel" class="form-control" required>
+                    <span class="err-msg">
+                      <div *ngIf="pan_number.touched">
+                          <div *ngIf="pan_number.errors && pan_number.errors.required">
+                            Pan Number is required
+                          </div>
+                      </div>
+                  </span>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="name" style="clear:both;">Branch Name</label>
+                    <input type="text" name="branch" value="" [(ngModel)]="user.branch" #branch="ngModel" class="form-control" required pattern="[a-zA-Z ]*">
+                    <span class="err-msg">
+                      <div *ngIf="branch.touched">
+                          <div *ngIf="branch.errors && branch.errors.required">
+                            Branch Name is required
+                          </div>
+                      </div>
+                  </span>
+                  <span class="err-msg">
+                    <div *ngIf="branch.touched">
+                        <div *ngIf="branch.errors && branch.errors.pattern">
+                            please enter Alphabits olny 
+                        </div>
+                    </div>
+                </span>
+                  </div>
+                </div>
+              </div>
+              <div class="box-footer">
+                <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Save</button>
+              </div>
+            </div>
+          </form>
+        </div><!-- /.box -->
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="modal fade successmechPopup" tabindex="-1" role="dialog">
+  <div class="modal-dialog  modal-sm" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Bank details Add</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <p>
+                  <i class="fa fa-check fa-2"></i>&nbsp;
+                  <span>Bank details added sucessfully</span>
+              </p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" (click)="redirect()" class="btn btn-danger" data-dismiss="modal">close</button>
+          </div>
+      </div>
+  </div>
+</div>

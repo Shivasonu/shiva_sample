@@ -1,0 +1,858 @@
+<div class="container">
+  <section class="content-header">
+    <h1>
+      User Permissions
+      <small>List</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+      <li class="active">Permissions</li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="box">
+          <div class="box-header with-border">
+          </div><!-- /.box-header -->
+
+
+          <div class="box-body table-responsive" style="overflow-x: unset!important">
+            <div class="row">
+              <div class="col-lg-12">
+                <button type="submit" class="btn btn-primary" form="permission">Submit</button>
+              </div>
+            </div>
+
+            <br>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="table-responsive">
+
+                  <form id="permission" method="post" action="">
+
+                    <table class="table table-bordered table-hover tablesorter" id="example">
+                      <thead>
+                        <tr>
+                          <th>Actions</th>
+                          <th>Employee</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td><b>Authentication</b></td>
+                          <td><input type="checkbox" name="access[3][1]" checked=""></td>
+                        </tr>
+                        <tr>
+                          <td>--&gt; Login</td>
+                          <td><input type="checkbox" name="access[3][2]" checked="" disabled=""></td>
+                        </tr>
+                        <tr>
+                          <td>--&gt; Logout</td>
+                          <td><input type="checkbox" name="access[3][3]" checked="" disabled=""></td>
+                        </tr>
+                        <tr>
+                          <td><b>All Case</b></td>
+                          <td><input type="checkbox" name="access[3][4]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Add</td>
+                          <td><input type="checkbox" name="access[3][5]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Edit</td>
+                          <td><input type="checkbox" name="access[3][6]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; View Case</td>
+                          <td><input type="checkbox" name="access[3][7]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Fees</td>
+                          <td><input type="checkbox" name="access[3][8]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Archived</td>
+                          <td><input type="checkbox" name="access[3][9]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Starred Cases</td>
+                          <td><input type="checkbox" name="access[3][10]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Archived Cases</td>
+                          <td><input type="checkbox" name="access[3][11]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; View Archived Case</td>
+                          <td><input type="checkbox" name="access[3][12]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Restore</td>
+                          <td><input type="checkbox" name="access[3][13]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Message</td>
+                          <td><input type="checkbox" name="access[3][15]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Hearing Date</td>
+                          <td><input type="checkbox" name="access[3][84]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Case Alert</td>
+                          <td><input type="checkbox" name="access[3][105]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Notes</td>
+                          <td><input type="checkbox" name="access[3][156]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete Fees</td>
+                          <td><input type="checkbox" name="access[3][166]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; View Receipt</td>
+                          <td><input type="checkbox" name="access[3][167]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete Receipt</td>
+                          <td><input type="checkbox" name="access[3][169]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; View Case Extended Date Details</td>
+                          <td><input type="checkbox" name="access[3][170]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete Case Extended Dates</td>
+                          <td><input type="checkbox" name="access[3][171]"></td>
+                        </tr>
+                        <tr>
+                          <td><b>Reports</b></td>
+                          <td><input type="checkbox" name="access[3][14]"></td>
+                        </tr>
+                        <tr>
+                          <td><b>To Do List</b></td>
+                          <td><input type="checkbox" name="access[3][16]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Add</td>
+                          <td><input type="checkbox" name="access[3][17]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Edit</td>
+                          <td><input type="checkbox" name="access[3][18]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; View</td>
+                          <td><input type="checkbox" name="access[3][19]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete</td>
+                          <td><input type="checkbox" name="access[3][20]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; To Do Alert</td>
+                          <td><input type="checkbox" name="access[3][107]"></td>
+                        </tr>
+                        <tr>
+                          <td><b>Contacts</b></td>
+                          <td><input type="checkbox" name="access[3][21]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Add</td>
+                          <td><input type="checkbox" name="access[3][22]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Edit</td>
+                          <td><input type="checkbox" name="access[3][23]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete</td>
+                          <td><input type="checkbox" name="access[3][24]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Contact</td>
+                          <td><input type="checkbox" name="access[3][155]" checked=""></td>
+                        </tr>
+                        <tr>
+                          <td><b>Appointments</b></td>
+                          <td><input type="checkbox" name="access[3][25]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Add</td>
+                          <td><input type="checkbox" name="access[3][26]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Edit</td>
+                          <td><input type="checkbox" name="access[3][27]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete</td>
+                          <td><input type="checkbox" name="access[3][28]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; View</td>
+                          <td><input type="checkbox" name="access[3][29]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Appointment Alert</td>
+                          <td><input type="checkbox" name="access[3][106]" checked=""></td>
+                        </tr>
+                        <tr>
+                          <td><b>Clients</b></td>
+                          <td><input type="checkbox" name="access[3][32]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Add</td>
+                          <td><input type="checkbox" name="access[3][33]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Edit</td>
+                          <td><input type="checkbox" name="access[3][34]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete</td>
+                          <td><input type="checkbox" name="access[3][35]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; View</td>
+                          <td><input type="checkbox" name="access[3][36]" checked=""></td>
+                        </tr>
+                        <tr>
+                          <td><b>Employees</b></td>
+                          <td><input type="checkbox" name="access[3][37]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Add</td>
+                          <td><input type="checkbox" name="access[3][38]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Edit</td>
+                          <td><input type="checkbox" name="access[3][39]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete</td>
+                          <td><input type="checkbox" name="access[3][40]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; View</td>
+                          <td><input type="checkbox" name="access[3][41]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Bank Details</td>
+                          <td><input type="checkbox" name="access[3][123]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Add Bank Details</td>
+                          <td><input type="checkbox" name="access[3][124]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete Bank Details</td>
+                          <td><input type="checkbox" name="access[3][125]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Documents</td>
+                          <td><input type="checkbox" name="access[3][126]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete Documents</td>
+                          <td><input type="checkbox" name="access[3][127]"></td>
+                        </tr>
+                        <tr>
+                          <td><b>User Role</b></td>
+                          <td><input type="checkbox" name="access[3][42]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Add</td>
+                          <td><input type="checkbox" name="access[3][43]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Edit</td>
+                          <td><input type="checkbox" name="access[3][44]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete</td>
+                          <td><input type="checkbox" name="access[3][45]"></td>
+                        </tr>
+                        <tr>
+                          <td><b>Departments</b></td>
+                          <td><input type="checkbox" name="access[3][46]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Add</td>
+                          <td><input type="checkbox" name="access[3][47]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Edit</td>
+                          <td><input type="checkbox" name="access[3][48]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete</td>
+                          <td><input type="checkbox" name="access[3][49]"></td>
+                        </tr>
+                        <tr>
+                          <td><b>Location</b></td>
+                          <td><input type="checkbox" name="access[3][51]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Add</td>
+                          <td><input type="checkbox" name="access[3][52]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Edit</td>
+                          <td><input type="checkbox" name="access[3][53]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete</td>
+                          <td><input type="checkbox" name="access[3][54]"></td>
+                        </tr>
+                        <tr>
+                          <td><b>Case Category</b></td>
+                          <td><input type="checkbox" name="access[3][55]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Add</td>
+                          <td><input type="checkbox" name="access[3][56]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Edit</td>
+                          <td><input type="checkbox" name="access[3][57]"></td>
+                        </tr>
+                        <tr>
+                          <td><b>Court Category</b></td>
+                          <td><input type="checkbox" name="access[3][59]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Add</td>
+                          <td><input type="checkbox" name="access[3][60]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Edit</td>
+                          <td><input type="checkbox" name="access[3][61]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete</td>
+                          <td><input type="checkbox" name="access[3][62]"></td>
+                        </tr>
+                        <tr>
+                          <td><b>Act</b></td>
+                          <td><input type="checkbox" name="access[3][63]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Add</td>
+                          <td><input type="checkbox" name="access[3][64]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Edit</td>
+                          <td><input type="checkbox" name="access[3][65]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete</td>
+                          <td><input type="checkbox" name="access[3][66]"></td>
+                        </tr>
+                        <tr>
+                          <td><b>Court</b></td>
+                          <td><input type="checkbox" name="access[3][67]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Add</td>
+                          <td><input type="checkbox" name="access[3][68]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Edit</td>
+                          <td><input type="checkbox" name="access[3][69]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete</td>
+                          <td><input type="checkbox" name="access[3][70]"></td>
+                        </tr>
+                        <tr>
+                          <td><b>Case Stages</b></td>
+                          <td><input type="checkbox" name="access[3][71]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Add</td>
+                          <td><input type="checkbox" name="access[3][72]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Edit</td>
+                          <td><input type="checkbox" name="access[3][73]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delte</td>
+                          <td><input type="checkbox" name="access[3][74]"></td>
+                        </tr>
+                        <tr>
+                          <td><b>Payment Modes</b></td>
+                          <td><input type="checkbox" name="access[3][75]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Add</td>
+                          <td><input type="checkbox" name="access[3][76]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Edit</td>
+                          <td><input type="checkbox" name="access[3][77]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete</td>
+                          <td><input type="checkbox" name="access[3][78]"></td>
+                        </tr>
+                        <tr>
+                          <td><b>Settings</b></td>
+                          <td><input type="checkbox" name="access[3][79]"></td>
+                        </tr>
+                        <tr>
+                          <td><b>Notification</b></td>
+                          <td><input type="checkbox" name="access[3][80]"></td>
+                        </tr>
+                        <tr>
+                          <td><b>Languages</b></td>
+                          <td><input type="checkbox" name="access[3][81]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Edit</td>
+                          <td><input type="checkbox" name="access[3][82]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete</td>
+                          <td><input type="checkbox" name="access[3][83]"></td>
+                        </tr>
+                        <tr>
+                          <td><b>Invoice</b></td>
+                          <td><input type="checkbox" name="access[3][108]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Mail</td>
+                          <td><input type="checkbox" name="access[3][109]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Pdf</td>
+                          <td><input type="checkbox" name="access[3][110]" checked=""></td>
+                        </tr>
+                        <tr>
+                          <td><b>Tasks</b></td>
+                          <td><input type="checkbox" name="access[3][112]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Add</td>
+                          <td><input type="checkbox" name="access[3][113]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Edit</td>
+                          <td><input type="checkbox" name="access[3][114]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; View</td>
+                          <td><input type="checkbox" name="access[3][115]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete</td>
+                          <td><input type="checkbox" name="access[3][116]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Comments</td>
+                          <td><input type="checkbox" name="access[3][117]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; My Tasks</td>
+                          <td><input type="checkbox" name="access[3][152]"></td>
+                        </tr>
+                        <tr>
+                          <td><b>Documents</b></td>
+                          <td><input type="checkbox" name="access[3][118]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Add</td>
+                          <td><input type="checkbox" name="access[3][119]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Edit</td>
+                          <td><input type="checkbox" name="access[3][120]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete</td>
+                          <td><input type="checkbox" name="access[3][121]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Manage</td>
+                          <td><input type="checkbox" name="access[3][122]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; My Delete DOcument</td>
+                          <td><input type="checkbox" name="access[3][153]"></td>
+                        </tr>
+                        <tr>
+                          <td><b>Attendance</b></td>
+                          <td><input type="checkbox" name="access[3][129]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Leave Notification</td>
+                          <td><input type="checkbox" name="access[3][130]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Pending /Approve Leave</td>
+                          <td><input type="checkbox" name="access[3][131]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete Leave</td>
+                          <td><input type="checkbox" name="access[3][132]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Mark In</td>
+                          <td><input type="checkbox" name="access[3][133]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Mark Out</td>
+                          <td><input type="checkbox" name="access[3][134]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; My Attendance</td>
+                          <td><input type="checkbox" name="access[3][135]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; My Leaves</td>
+                          <td><input type="checkbox" name="access[3][136]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Apply Leave</td>
+                          <td><input type="checkbox" name="access[3][137]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete My Leave</td>
+                          <td><input type="checkbox" name="access[3][138]"></td>
+                        </tr>
+                        <tr>
+                          <td><b>Leave Types</b></td>
+                          <td><input type="checkbox" name="access[3][139]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Add</td>
+                          <td><input type="checkbox" name="access[3][140]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Edit</td>
+                          <td><input type="checkbox" name="access[3][141]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete</td>
+                          <td><input type="checkbox" name="access[3][142]"></td>
+                        </tr>
+                        <tr>
+                          <td><b>Holidays</b></td>
+                          <td><input type="checkbox" name="access[3][143]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Add</td>
+                          <td><input type="checkbox" name="access[3][144]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete</td>
+                          <td><input type="checkbox" name="access[3][145]"></td>
+                        </tr>
+                        <tr>
+                          <td><b>Notice</b></td>
+                          <td><input type="checkbox" name="access[3][146]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Add</td>
+                          <td><input type="checkbox" name="access[3][147]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Edit</td>
+                          <td><input type="checkbox" name="access[3][148]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete</td>
+                          <td><input type="checkbox" name="access[3][149]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; View</td>
+                          <td><input type="checkbox" name="access[3][150]" checked=""></td>
+                        </tr>
+                        <tr>
+                          <td><b>Tax</b></td>
+                          <td><input type="checkbox" name="access[3][157]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Add</td>
+                          <td><input type="checkbox" name="access[3][158]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Edit</td>
+                          <td><input type="checkbox" name="access[3][159]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete</td>
+                          <td><input type="checkbox" name="access[3][160]"></td>
+                        </tr>
+                        <tr>
+                          <td><b>Case Study</b></td>
+                          <td><input type="checkbox" name="access[3][161]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Add</td>
+                          <td><input type="checkbox" name="access[3][162]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Edit</td>
+                          <td><input type="checkbox" name="access[3][163]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Delete</td>
+                          <td><input type="checkbox" name="access[3][164]"></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; View</td>
+                          <td><input type="checkbox" name="access[3][165]" checked=""></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>--&gt; Attachments</td>
+                          <td><input type="checkbox" name="access[3][172]"></td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </form>
+                </div>
+              </div>
+            </div><!-- /.row -->
+
+            <div class="row">
+              <div class="col-lg-12">
+                <button type="submit" class="btn btn-primary" form="permission">Submit</button>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+    </div>
+  </section>
+</div>

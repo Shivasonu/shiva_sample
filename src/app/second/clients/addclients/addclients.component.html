@@ -1,0 +1,225 @@
+<div>
+    <section class="content-header">
+        <h1>
+            Applicants <small>Add</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a [routerLink]="['/main/dasbhoard']"><i class="fa fa-dashboard"></i>Dasbhoard</a></li>
+            <li><a [routerLink]="['/main/hrmange/clients']">Applicants</a></li>
+            <li class="active"><b>Add</b></li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <!-- form start -->
+                    <form  #f="ngForm" name="myForm" enctype="multipart/form-data">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="name" style="clear:both;">Name <span>*</span></label>
+                                        <input type="text" name="name" [(ngModel)]="user.name" #name="ngModel"
+                                            class="form-control"
+                                            onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode > 31 && event.charCode < 33) || (event.charCode > 47 && event.charCode < 58)"
+                                            required pattern="[a-zA-Z ]*">
+                                        <span class="err-msg">
+                                            <div *ngIf="name.touched">
+                                                <div *ngIf="name.errors && name.errors.required">
+                                                    Name is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                        <span class="err-msg">
+                                            <div *ngIf="name.touched">
+                                                <div *ngIf="name.errors && name.errors.pattern">
+                                                    Please enter olny Alphabits
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="name" style="clear:both;">Profile Picture</label>
+                                        <input type="file" id="file" multiple (change)="getFileDetails($event)"
+                                            class="form-control">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="gender" style="clear:both;">Gender
+                                            &nbsp;<span>*</span>&nbsp;&nbsp;</label>
+                                        <input type="radio" name="gender" [(ngModel)]="user.gender" #gender="ngModel"
+                                            value="Male" required> Male &nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="gender" [(ngModel)]="user.gender" #gender="ngModel"
+                                            value="Female" required> Female
+                                        <span class="err-msg">
+                                            <div *ngIf="gender.errors && gender.errors.required">
+                                                Gender is required
+                                            </div>
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="dob" style="clear:both;">Date Of Birth <span>*</span></label>
+                                        <input type="date" name="dob" [(ngModel)]="user.dob" #dob="ngModel"
+                                            class="form-control datepicker" required>
+                                        <span class="err-msg">
+                                            <div *ngIf="dob.touched">
+                                                <div *ngIf="dob.errors && dob.errors.required">
+                                                    Date Of Birth is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="email" style="clear:both;">Email <span>*</span></label>
+                                        <input type="text" name="email" [(ngModel)]="user.email" #email="ngModel"
+                                            class="form-control"
+                                            pattern="^\S+@(([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6})$"
+                                            required>
+                                        <span class="err-msg">
+                                            <div *ngIf="email.touched">
+                                                <div *ngIf="email.errors && email.errors.required">
+                                                    Email id is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                        <span class="err-msg">
+                                            <div *ngIf="email.touched">
+                                                <div *ngIf="email.errors && email.errors.pattern">
+                                                    Please enter valid Email id
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="username" style="clear:both;">Username <span>*</span></label>
+                                        <input type="text" name="username" [(ngModel)]="user.username"
+                                            #username="ngModel" class="form-control" required>
+                                        <span class="err-msg">
+                                            <div *ngIf="username.touched">
+                                                <div *ngIf="username.errors && username.errors.required">
+                                                    Username is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="password" style="clear:both;">Password <span>*</span></label>
+                                        <input type="password" name="password" [(ngModel)]="user.password"
+                                            #password="ngModel" class="form-control" required>
+                                            <span class="err-msg">
+                                                <div *ngIf="password.touched">
+                                                    <div *ngIf="password.errors && password.errors.required">
+                                                        Password is required
+                                                    </div>
+                                                </div>
+                                            </span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="password" style="clear:both;">Confirm Password <span>*</span></label>
+                                        <input type="password" name="confirm" [(ngModel)]="user.confirm"
+                                        [pattern]="user.password"   #confirm="ngModel" class="form-control" required>
+                                        <span class="err-msg">
+                                            <div *ngIf="confirm.touched" aria-hidden="true">
+                                                <div *ngIf="confirm.errors && confirm.errors.required">
+                                                    Password is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                        <span class="err-msg">
+                                            <div *ngIf="confirm.touched" aria-hidden="true">
+                                                <div *ngIf="confirm.errors && confirm.errors.pattern">
+                                                    Please enter valid Email id
+                                                </div>
+                                            </div>
+                                        </span>
+                                        <p  [hidden]="!confirm.errors">
+                                            <span>Password not matched.</span>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="contact" style="clear:both;">Phone <span>*</span></label>
+                                        <input type="text" name="phone" [(ngModel)]="user.phone" #phone="ngModel"
+                                            class="form-control" pattern="[0-9]{10}" required>
+                                        <span class="err-msg">
+                                            <div *ngIf="phone.touched">
+                                                <div *ngIf="phone.errors && phone.errors.required">
+                                                    Mobile no is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                        <span class="err-msg">
+                                            <div *ngIf="phone.touched">
+                                                <div *ngIf="phone.errors && phone.errors.pattern">
+                                                    Please enter valid Mobile no
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="contact" style="clear:both;">Address <span>*</span></label>
+                                        <textarea name="address" [(ngModel)]="user.address" #address="ngModel"
+                                            class="form-control" required></textarea>
+                                        <span class="err-msg">
+                                            <div *ngIf="address.touched">
+                                                <div *ngIf="address.errors && address.errors.required">
+                                                    Address is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                        <div class="row">
+                            <div class="col-md-4  col-md-offset-4">
+                                    <div class="box-footer">
+                                            <button type="submit" (click)="addclient(user)" [disabled]="!f.valid" class="btn btn-primary">Save</button>
+                                        </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div><!-- /.box -->
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="modal fade successmechPopup" tabindex="-1" role="dialog">
+        <div class="modal-dialog  modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Applicant Add</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <i class="fa fa-check fa-2"></i>&nbsp;
+                        <span>Applicant added sucessfully</span>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" (click)="redirect()" class="btn btn-danger" data-dismiss="modal">close</button>
+                </div>
+            </div>
+        </div>
+      </div>

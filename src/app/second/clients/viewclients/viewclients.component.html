@@ -1,0 +1,53 @@
+<div class="container">
+    <section class="content-header">
+        <h1>
+            Applicants <small>View</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+            <li><a [routerLink]="['/main/hrmange/clients']">Applicants</a></li>
+            <li class="active">View</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <!-- form start -->
+                    <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12" *ngFor="let item of addclients;let i = index;">
+                                <div class="well well-sm">
+                                    <div class="row">
+                                        <div class="col-md-2 ">
+                                            <img src="http://localhost/advocate_api/uploads/user1.png" alt="" class="img-rounded img-responsive" />
+                                        </div>
+                                        <div class="col-md-2 col-sm-offset-1">
+                                            <h4>Name </h4>
+                                            <h5>Gender </h5>
+                                            <h5>DOB </h5>
+                                            <h5>Username </h5>
+                                            <h5>Address  </h5>
+                                            <h5>Email </h5>
+                                            <h5>Phone </h5>
+                                           <!-- Split button -->
+                                        </div>
+                                        <div class="col-md-5">
+                                                <h4>{{item.name}}</h4>
+                                                <h5>{{item.gender}}</h5>
+                                                <h5>{{item.dob}}</h5>
+                                                <h5>{{item.username}}</h5>
+                                                <h5>{{item.address}}</h5>
+                                                <h5>{{item.email}}</h5>
+                                               <h5>{{item.phone}}</h5>
+                                        </div>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+        </div>
+    </section>
+</div>

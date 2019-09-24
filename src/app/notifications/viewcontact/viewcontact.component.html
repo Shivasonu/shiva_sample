@@ -1,0 +1,66 @@
+<div class="container">
+  <section class="content-header">
+    <h1>
+        Contact        <small>View</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+        <li><a [routerLink]="['/main/contacts']">contacts</a></li>
+        <li class="active">View</li>
+    </ol>
+  </section>
+
+  <section class="content">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <!-- /.box-header -->
+                <!-- form start -->
+				    <div class="box-body" *ngFor="let item of addcontacts;let i = index;">
+                        <div class="form-group">
+                        	<div class="row">
+                                <div class="col-md-2">
+                                    <label for="name" style="clear:both;"> Name</label>
+								</div>	
+								<div class="col-md-4">{{item.name}}</div>
+                            </div>
+                        </div>
+						
+						 <div class="form-group">
+                        	<div class="row">
+                                <div class="col-md-2">
+                                    <label for="name" style="clear:both;">Email</label>
+								</div>	
+								<div class="col-md-4">{{item.email}}</div>
+                            </div>
+                        </div>
+						
+						
+						 <div class="form-group">
+                        	<div class="row">
+                                <div class="col-md-2">
+                                    <label for="name" style="clear:both;">Phone </label>
+								</div>	
+								<div class="col-md-4">
+									{{item.phone }}</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                        	<div class="row">
+                                <div class="col-md-2">
+                                    <label for="name" style="clear:both;">Address </label>
+								</div>	
+								<div class="col-md-4">
+									{{item.address}}</div>
+                            </div>
+                        </div>
+                    </div><!-- /.box-body -->
+    
+                         </div><!-- /.box -->
+        </div>
+     </div>
+</section>
+</div>

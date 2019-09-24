@@ -1,0 +1,77 @@
+<div class="container" >
+  <section class="content-header">
+    <h1>
+      Send <small>Message</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+      <li><a [routerLink]="['/main/message']">Messages</a></li>
+      <li class="active">Send</li>
+    </ol>
+  </section>
+
+  <section class="content">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+          <!-- Chat box -->
+          <div class="box box-success">
+            <div class="box-body chat" id="chat-box">
+              <!-- chat item -->
+              <div class="item" *ngFor="let item of sendmessage;let i = index;">
+                <!-- <img alt="user image" class="online"> -->
+
+                <p class="message" style="padding-top:12px;">
+                  <a class="name">
+                    <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{item.date}}</small>
+
+
+                    <span style="color:#FF0000">{{item.user_from}}</span>
+                    <p>{{item.message}}</p>
+
+                  </a>
+                </p>
+                
+              </div>
+
+
+            </div><!-- /.chat -->
+
+          </div><!-- /.box (chat box) -->
+          <!-- form start -->
+
+
+          <h3 style="color:#FF0000"></h3>
+          <form #f="ngForm" name="myForm">
+            <div class="box-body">
+              <div class="box-body">
+
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-8">
+                      <label for="name" style="clear:both;">Message</label>
+                      <div class="redactor_box">
+                        <textarea name="message" [(ngModel)]="user.message" #message="ngModel" class="form-control redactor" dir="ltr" required></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+              </div><!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" (click)="addmessage(user)" [disabled]="!f.valid" class="btn btn-primary">Submit</button>
+              </div>
+            </div><!-- /.box -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

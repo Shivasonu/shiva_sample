@@ -1,0 +1,121 @@
+<div class="container">
+    <section class="content-header">
+        <h1>
+            Departments <small>Add</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a [routerLink]="['/main/dashboard']"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+            <li><a [routerLink]="['/main/hrmange/departments']">Departments</a></li>
+            <li class="active"><b>Add</b></li>
+        </ol>
+        <section class="content">
+            <div class="col-md-12">
+                <!-- left column -->
+                <div class="row">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <h3 style="color:#FF0000"></h3>
+                        <form (submit)="adddepartment(user)" #addDeptFormRef="ngForm" name="addDeptForm">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="name" style="clear:both;">Department Name <span>*</span></label>
+                                            <input type="text" name="name" [(ngModel)]="dept.name" #name="ngModel"
+                                                class="form-control" placeholder="Department name" required pattern="[a-zA-Z ]*">
+                                            <span class="err-msg">
+                                                <div *ngIf="name.touched">
+                                                    <div *ngIf="name.errors && name.errors.required">
+                                                        Department name is required
+                                                    </div>
+                                                </div>
+                                            </span>
+                                            <span class="err-msg">
+                                                    <div *ngIf="name.touched">
+                                                        <div *ngIf="name.errors && name.errors.pattern">
+                                                            Please enter olny Alphabits
+                                                        </div>
+                                                    </div>
+                                                </span>
+                                        </div>
+                                        <div class="col-md-4">
+                                                <label for="name" style="clear:both;">Description <span>*</span></label>
+                                                <textarea type="text" name="description" [(ngModel)]="dept.description"
+                                                    #description="ngModel" class="form-control" placeholder="Description"
+                                                    required></textarea>
+                                                <span class="err-msg">
+                                                    <div *ngIf="description.touched">
+                                                        <div *ngIf="description.errors && description.errors.required">
+                                                            Description is required
+                                                        </div>
+                                                    </div>
+                                                </span>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="form-group input_fields_wrap">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="name" style="clear:both;"> Designations <span>*</span></label>
+                                            <input type="text" name="designations" [(ngModel)]="dept.designations"
+                                                #designations="ngModel" class="form-control" placeholder="Designations">
+                                            <!-- <span class="err-msg">
+                                                <div *ngIf="designations.touched">
+                                                    <div *ngIf="designations.errors && designations.errors.required">
+                                                        Mobile no is required
+                                                    </div>
+                                                </div>
+                                            </span> -->
+                                            <p *ngFor="let desg of designationsList; let i = index;"> {{desg}}
+                                                <span>
+                                                    <button (click)="sliceDept(i)">&times;</button>
+                                                </span>
+                                            </p>
+                                        </div>
+
+
+
+                                        <div class="col-md-4" style="padding-top:22px;">
+                                            <button type="button" class="add_field_button btn btn-success"
+                                                (click)="addMoreDesignations(dept)">Add More </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div><!-- /.box-body -->
+
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-primary"
+                                    (click)="saveDepartment(dept)">Save</button>
+                            </div>
+                        </form>
+                    </div><!-- /.box -->
+                </div>
+            </div>
+        </section>
+    </section>
+</div>
+
+<div class="modal fade successmechPopup" tabindex="-1" role="dialog">
+        <div class="modal-dialog  modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Departments Add</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <i class="fa fa-check fa-2"></i>&nbsp;
+                        <span>Departments added sucessfully</span>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" (click)="redirect()" class="btn btn-danger" data-dismiss="modal">close</button>
+                </div>
+            </div>
+        </div>
+      </div>
