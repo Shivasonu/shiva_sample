@@ -30,7 +30,7 @@
     "@progress/kendo-angular-buttons": "^4.4.0",
     "@progress/kendo-angular-dialog": "^3.11.0",
     "@progress/kendo-angular-dropdowns": "^3.5.3",
-    "@progress/kendo-angular-editor": "^0.4.2",
+    "@progress/kendo-angular-editor": "^1.2.3",
     "@progress/kendo-angular-l10n": "^1.4.0",
     "@progress/kendo-angular-toolbar": "^1.1.1",
     "angular-fusioncharts": "^3.0.2",
